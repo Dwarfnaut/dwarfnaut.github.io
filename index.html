@@ -17,16 +17,9 @@
     </button>
 
     <nav class="site-nav" aria-label="Primary navigation">
-      <a class="active" href="index.html">Projects</a>
-      <a href="about.html">About Me</a>
-      <div class="nav-dropdown">
-        <button type="button" class="dropdown-toggle" aria-expanded="false">Skills</button>
-        <div class="dropdown-menu">
-          <a href="art.html">Art</a>
-          <a href="cartography.html">Cartography</a>
-          <a href="architecture.html">Architecture</a>
-        </div>
-      </div>
+      <a class="active" href="#projects">Projects</a>
+      <a href="#about">About Me</a>
+      <a href="#skills">Skills</a>
       <a class="itch-link" href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Itch.io Profile</a>
     </nav>
   </header>
@@ -42,13 +35,17 @@
       </div>
     </section>
 
-    <section class="intro section-pad fade-in" aria-label="Introduction">
+    <section id="skills" class="intro section-pad fade-in" aria-label="Introduction">
       <div class="intro-copy">
         <p>
-          I'm a recent Game Design graduate with a focus on level design and game design. I'm passionate about creating environments, lore, and immersive experiences.
+          I'm a recent Game Design graduate with a focus on level design and game design.
+          I'm passionate about creating environments, lore, and immersive experiences.
         </p>
         <p>
-          My skillset is not limited to just game development. Learning, creating, and my professional background have led me to gather experience and pick up techniques along the way which help me within game development. Check the relevant skills below for more details and examples of my work.
+          My skillset is not limited to just game development. Learning, creating, and my
+          professional background have led me to gather experience and pick up techniques
+          along the way which help me within game development. Check the relevant skills
+          below for more details and examples of my work.
         </p>
       </div>
 
@@ -63,7 +60,7 @@
       </div>
     </section>
 
-    <section class="projects section-pad fade-in" aria-labelledby="projects-title">
+    <section id="projects" class="projects section-pad fade-in" aria-labelledby="projects-title">
       <div class="section-heading">
         <span></span>
         <h2 id="projects-title">Projects</h2>
@@ -160,6 +157,43 @@
           <p>A short source-like puzzle game with dimension switching mechanic. (TEAM)</p>
           <a class="read-more" href="projects/luna-insula.html">Read More</a>
         </article>
+      </div>
+    </section>
+
+    <section id="about" class="about-section fade-in" aria-labelledby="about-title">
+      <div class="about-inner">
+        <div class="about-copy">
+          <h2 id="about-title">About Me</h2>
+
+          <p>
+            Hi! My name is Dominik Szczepaniak and I am a recent graduate of MSc. of Game Design
+            at IT University of Copenhagen with a bachelor degree in Architectural Technology.
+            What I value the most in games is immersion and aesthetic. I love to create worlds:
+            lore, sketches, maps, 3D models and sculpts, ambiences, and any details that make
+            those alive.
+          </p>
+
+          <p>
+            I learned a lot about teamwork and collaborative design during my Bachelor and Master's
+            studies, as well as various game jams, but can also hold my own when it comes to
+            solo development.
+          </p>
+
+          <p>
+            I have a passion for games with oldschool style, immersive first-person games, VR games,
+            and many others. Some of my favorite titles are <em>Half-Life: Alyx</em>,
+            <em>TES III: Morrowind</em>, <em>Myst</em>, <em>Psychonauts</em>,
+            <em>Neverhood</em>, <em>Amnesia</em>, and <em>Minecraft</em>.
+          </p>
+        </div>
+
+        <aside class="about-side">
+          <img src="assets/about-photo.jpg" alt="Dominik Szczepaniak" data-fallback-text="Photo">
+
+          <h3>Contact</h3>
+          <a href="mailto:peryfin@gmail.com">peryfin@gmail.com</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </aside>
       </div>
     </section>
   </main>
