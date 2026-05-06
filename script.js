@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdownToggle = document.querySelector('.dropdown-toggle');
   const fadeEls = document.querySelectorAll('.fade-in');
 
+  const header = document.querySelector('.site-header');
+
+  const updateHeader = () => {
+    if (!header) return;
+    header.classList.toggle('scrolled', window.scrollY > 420);
+  };
+
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
+
   if (navToggle) {
     navToggle.addEventListener('click', () => {
       const isOpen = body.classList.toggle('menu-open');
