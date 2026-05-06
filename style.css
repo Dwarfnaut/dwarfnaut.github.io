@@ -168,25 +168,36 @@ a {
 }
 
 .hero {
-  --curve-height: clamp(470px, 48vw, 880px);
+  --hero-parallax: 0px;
   position: relative;
-  min-height: 52vh;
+  min-height: 54vh;
   display: grid;
   place-items: start center;
   padding: calc(var(--header-height) + 18px) 20px 190px;
   overflow: hidden;
-  background: var(--white);
+  background: var(--black);
   color: var(--black);
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: -8% 0 0;
+  background:
+    linear-gradient(rgba(247, 247, 244, 0.78), rgba(247, 247, 244, 0.78)),
+    url("assets/hero-background.jpg") center / cover no-repeat;
+  transform: translateY(var(--hero-parallax));
+  will-change: transform;
 }
 
 .hero::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: calc(var(--curve-height) * -0.7);
-  width: 155vw;
-  height: var(--curve-height);
-  border-radius: 50%;
+  bottom: -1px;
+  width: 160vw;
+  height: clamp(180px, 18vw, 340px);
+  border-radius: 50% 50% 0 0;
   background: var(--black);
   transform: translateX(-50%);
 }
@@ -195,6 +206,7 @@ a {
   position: relative;
   z-index: 1;
 }
+
 
 .logo-wrap {
   width: clamp(70px, 6.5vw, 96px);
@@ -544,16 +556,16 @@ h1 {
   }
 
   .hero {
-    --curve-height: clamp(310px, 82vw, 520px);
-    min-height: 43vh;
-    padding-top: calc(var(--header-height) + 28px);
-    padding-bottom: 116px;
+  min-height: 46vh;
+  padding-top: calc(var(--header-height) + 28px);
+  padding-bottom: 128px;
   }
 
   .hero::after {
-    bottom: calc(var(--curve-height) * -0.7);
-    width: 205vw;
+  width: 220vw;
+  height: clamp(120px, 32vw, 220px);
   }
+
 
   h1 {
     margin-bottom: 18px;
