@@ -5,64 +5,161 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dominik Szczepaniak | Dwarfnaut</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
-  
-<script src="script.js"></script>
 
 <body>
+  <header class="site-header">
+    <a class="site-mark" href="index.html">Dwarfnaut</a>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <p class="kicker">Portfolio</p>
-    <h1>Dominik Szczepaniak</h1>
-    <p class="subtitle">Dwarfnaut</p>
-  </div>
-</section>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-<!-- INTRO -->
-<section class="intro fade-in">
-  <p>
-    I'm a Games Design student focused on level design, game design, cartography,
-    architecture, and atmospheric worldbuilding.
-  </p>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="active" href="index.html">Projects</a>
+      <a href="about.html">About Me</a>
+      <div class="nav-dropdown">
+        <button type="button" class="dropdown-toggle" aria-expanded="false">Skills</button>
+        <div class="dropdown-menu">
+          <a href="art.html">Art</a>
+          <a href="cartography.html">Cartography</a>
+          <a href="architecture.html">Architecture</a>
+        </div>
+      </div>
+      <a class="itch-link" href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Itch.io Profile</a>
+    </nav>
+  </header>
 
-  <div class="buttons">
-    <a href="art.html" class="btn">ART</a>
-    <a href="cartography.html" class="btn">CARTOGRAPHY</a>
-    <a href="architecture.html" class="btn">ARCHITECTURE</a>
-  </div>
-</section>
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-content">
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="Dwarfnaut logo" class="logo" data-fallback-text="D">
+        </div>
+        <h1 id="page-title">Dominik Szczepaniak</h1>
+        <p>Dwarfnaut</p>
+      </div>
+    </section>
 
-<!-- PROJECTS -->
-<section class="projects fade-in">
-  <h2>PROJECTS</h2>
+    <section class="intro section-pad fade-in" aria-label="Introduction">
+      <div class="intro-copy">
+        <p>
+          I'm a Games Design student with a focus on level design and game design.
+          I'm passionate about creating environments, lore, and immersive experiences.
+        </p>
+        <p>
+          My skillset is not limited to just game development. Curiosity, learning,
+          creating, and my previous professional background have led me to gather
+          experience and pick up techniques along the way which I believe help me
+          within the area of gamedev. Check the relevant skills below for more
+          detailed descriptions and examples of my work.
+        </p>
+      </div>
 
-  <div class="grid">
+      <div class="intro-visual" aria-hidden="true">
+        <img src="assets/intro-visual.gif" alt="" data-optional>
+      </div>
 
-    <div class="card">
-      <div class="card-image placeholder">N</div>
-      <h3>NOSINK</h3>
-      <p>Fast-paced arena platformer built around momentum, timing, and clean combat readability.</p>
-      <a href="projects/nosink.html" class="read-more">READ MORE</a>
-    </div>
+      <div class="skill-buttons" aria-label="Portfolio categories">
+        <a href="art.html">Art</a>
+        <a href="cartography.html">Cartography</a>
+        <a href="architecture.html">Architecture</a>
+      </div>
+    </section>
 
-    <div class="card">
-      <div class="card-image placeholder">C</div>
-      <h3>CARTOGRAPHY</h3>
-      <p>Maps, routes, regions, and visual systems for believable game spaces.</p>
-      <a href="cartography.html" class="read-more">READ MORE</a>
-    </div>
+    <section class="projects section-pad fade-in" aria-labelledby="projects-title">
+      <div class="section-heading">
+        <span></span>
+        <h2 id="projects-title">Projects</h2>
+        <span></span>
+      </div>
 
-    <div class="card">
-      <div class="card-image placeholder">A</div>
-      <h3>ARCHITECTURE</h3>
-      <p>Environmental studies and spatial compositions shaped for exploration.</p>
-      <a href="architecture.html" class="read-more">READ MORE</a>
-    </div>
+      <div class="project-grid">
+        <article class="project-card">
+          <a class="project-media" href="projects/nosink.html" aria-label="Open Nosink project page">
+            <img src="assets/projects/nosink.gif" alt="Nosink gameplay preview" data-fallback-text="Nosink">
+          </a>
+          <h3>Nosink</h3>
+          <p>Fast-paced arena platformer with shooter elements. (TEAM)</p>
+          <a class="read-more" href="projects/nosink.html">Read More</a>
+        </article>
 
-  </div>
-</section>
+        <article class="project-card">
+          <a class="project-media" href="projects/rattler.html" aria-label="Open Rattler project page">
+            <img src="assets/projects/rattler.gif" alt="Rattler gameplay preview" data-fallback-text="Rattler">
+          </a>
+          <h3>Rattler</h3>
+          <p>A sewer chaser game with multipurpose pills which both heal you and damage the ghost. (SOLO)</p>
+          <a class="read-more" href="projects/rattler.html">Read More</a>
+        </article>
 
+        <article class="project-card">
+          <a class="project-media" href="projects/one-thousand-tea-kiosks.html" aria-label="Open One Thousand Tea Kiosks project page">
+            <img src="assets/projects/one-thousand-tea-kiosks.gif" alt="One Thousand Tea Kiosks preview" data-fallback-text="Tea Kiosks">
+          </a>
+          <h3>One Thousand Tea Kiosks</h3>
+          <p>A gloomy tea kiosk generator with one thousand possible combinations. (SOLO)</p>
+          <a class="read-more" href="projects/one-thousand-tea-kiosks.html">Read More</a>
+        </article>
+
+        <article class="project-card">
+          <a class="project-media" href="projects/a-song-of-mold-and-cheese.html" aria-label="Open A Song of Mold and Cheese project page">
+            <img src="assets/projects/a-song-of-mold-and-cheese.gif" alt="A Song of Mold and Cheese gameplay preview" data-fallback-text="Mold & Cheese">
+          </a>
+          <h3>A Song of Mold and Cheese</h3>
+          <p>Explore the social complexity of fridge's food pyramid and face the mold threat. (TEAM)</p>
+          <a class="read-more" href="projects/a-song-of-mold-and-cheese.html">Read More</a>
+        </article>
+
+        <article class="project-card">
+          <a class="project-media" href="projects/rolling-through-mokki.html" aria-label="Open Rolling Through Mokki project page">
+            <img src="assets/projects/rolling-through-mokki.gif" alt="Rolling Through Mokki gameplay preview" data-fallback-text="Mokki">
+          </a>
+          <h3>Rolling Through Mökki</h3>
+          <p>Escape the cottage as a tiny creature before the smoke causes you to perish. (TEAM)</p>
+          <a class="read-more" href="projects/rolling-through-mokki.html">Read More</a>
+        </article>
+
+        <article class="project-card">
+          <a class="project-media" href="projects/naptime-gamble.html" aria-label="Open Naptime Gamble project page">
+            <img src="assets/projects/naptime-gamble.gif" alt="Naptime Gamble gameplay preview" data-fallback-text="Naptime">
+          </a>
+          <h3>Naptime Gamble</h3>
+          <p>Strategically plan your nap time while trying to reach the correct end station. (TEAM)</p>
+          <a class="read-more" href="projects/naptime-gamble.html">Read More</a>
+        </article>
+
+        <article class="project-card">
+          <a class="project-media" href="projects/dominik-cigarette.html" aria-label="Open Dominik Cigarette project page">
+            <img src="assets/projects/dominik-cigarette.gif" alt="Dominik Cigarette gameplay preview" data-fallback-text="Cigarette">
+          </a>
+          <h3>Dominik Cigarette</h3>
+          <p>Try to drive back home with no headlights, relying on sound to avoid ditching. (DUO)</p>
+          <a class="read-more" href="projects/dominik-cigarette.html">Read More</a>
+        </article>
+
+        <article class="project-card">
+          <a class="project-media" href="projects/basement-boogie.html" aria-label="Open Basement Boogie project page">
+            <img src="assets/projects/basement-boogie.gif" alt="Basement Boogie gameplay preview" data-fallback-text="Boogie">
+          </a>
+          <h3>Basement Boogie</h3>
+          <p>Survive the rat monster for as long as you can, while driving clients around in your rat taxi. (DUO)</p>
+          <a class="read-more" href="projects/basement-boogie.html">Read More</a>
+        </article>
+
+        <article class="project-card">
+          <a class="project-media" href="projects/lemon-orchard.html" aria-label="Open Lemon Orchard project page">
+            <img src="assets/projects/lemon-orchard.gif" alt="Lemon Orchard gameplay preview" data-fallback-text="Lemon Orchard">
+          </a>
+          <h3>Lemon Orchard</h3>
+          <p>Unsettling semi-PSX atmospheric short game about lemon orchards. (SOLO)</p>
+          <a class="read-more" href="projects/lemon-orchard.html">Read More</a>
+        </article>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
