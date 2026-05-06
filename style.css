@@ -170,10 +170,10 @@ a {
 .hero {
   --hero-parallax: 0px;
   position: relative;
-  min-height: 54vh;
+  min-height: 66vh;
   display: grid;
   place-items: start center;
-  padding: calc(var(--header-height) + 18px) 20px 190px;
+  padding: calc(var(--header-height) + 28px) 20px 260px;
   overflow: hidden;
   background: var(--black);
   color: var(--black);
@@ -194,10 +194,10 @@ a {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -1px;
-  width: 160vw;
-  height: clamp(180px, 18vw, 340px);
-  border-radius: 50% 50% 0 0;
+  bottom: -140px;
+  width: 170vw;
+  height: clamp(220px, 24vw, 430px);
+  border-radius: 50%;
   background: var(--black);
   transform: translateX(-50%);
 }
@@ -556,15 +556,17 @@ h1 {
   }
 
   .hero {
-  min-height: 46vh;
-  padding-top: calc(var(--header-height) + 28px);
-  padding-bottom: 128px;
+    min-height: 56vh;
+    padding-top: calc(var(--header-height) + 28px);
+    padding-bottom: 170px;
   }
 
   .hero::after {
-  width: 220vw;
-  height: clamp(120px, 32vw, 220px);
+    bottom: -88px;
+    width: 220vw;
+    height: clamp(160px, 44vw, 260px);
   }
+
 
 
   h1 {
