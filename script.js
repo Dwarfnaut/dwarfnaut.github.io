@@ -17,6 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHeader();
   window.addEventListener('scroll', updateHeader, { passive: true });
 
+  
+  const hero = document.querySelector('.hero');
+
+  const updateHeroParallax = () => {
+    if (!hero) return;
+    const offset = Math.min(window.scrollY * 0.18, 80);
+    hero.style.setProperty('--hero-parallax', `${offset}px`);
+  };
+
+  updateHeroParallax();
+  window.addEventListener('scroll', updateHeroParallax, { passive: true });
+
+  
   if (navToggle) {
     navToggle.addEventListener('click', () => {
       const isOpen = body.classList.toggle('menu-open');
