@@ -11,6 +11,17 @@
   --accent: #c9a769;
 }
 
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 body {
   margin: 0;
   background: var(--ink);
