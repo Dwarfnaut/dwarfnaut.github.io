@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -21,7 +23,7 @@ body {
   margin: 0;
   background: var(--black);
   color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   text-align: center;
 }
 
@@ -58,7 +60,9 @@ a {
   display: flex;
   align-items: center;
   gap: clamp(18px, 3vw, 46px);
-  font-size: 0.92rem;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 500;
 }
 
 .site-nav a,
@@ -130,10 +134,11 @@ a {
   justify-content: center;
   padding: 0 20px;
   border: 1px solid #151515;
-  border-radius: 4px;
+  border-radius: 8px;
   background: var(--black);
   color: var(--white) !important;
-  font-size: 0.8rem;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -145,7 +150,7 @@ a {
   place-items: center;
   gap: 5px;
   border: 1px solid #151515;
-  border-radius: 4px;
+  border-radius: 8px;
   background: transparent;
   cursor: pointer;
 }
@@ -208,7 +213,8 @@ a {
   display: grid !important;
   place-items: center;
   color: var(--black);
-  font-weight: 900;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -228,37 +234,41 @@ p {
 
 h1 {
   margin-bottom: 24px;
-  font-size: clamp(2.15rem, 3.4vw, 3.65rem);
+  color: var(--black);
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(2.35rem, 4vw, 4.15rem);
   font-weight: 400;
   letter-spacing: 0.055em;
   line-height: 1;
-  color: var(--black);
   text-transform: uppercase;
 }
 
 .hero p {
   margin: 0;
   color: #444;
-  font-size: 0.78rem;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .section-pad {
-  padding-right: max(22px, 5vw);
-  padding-left: max(22px, 5vw);
+  padding-right: max(18px, 4vw);
+  padding-left: max(18px, 4vw);
 }
 
 .intro {
   position: relative;
   z-index: 2;
-  width: min(1040px, 100%);
+  width: min(1180px, 100%);
   margin: 0 auto;
   padding-top: 36px;
   padding-bottom: 76px;
 }
 
 .intro-copy {
+  width: min(1120px, 100%);
   display: grid;
   gap: 18px;
   margin: 0 auto;
@@ -267,8 +277,10 @@ h1 {
 .intro p {
   margin-bottom: 0;
   color: var(--soft-white);
-  font-size: clamp(1rem, 1.15vw, 1.12rem);
-  line-height: 1.58;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(1.02rem, 1.08vw, 1.16rem);
+  font-weight: 500;
+  line-height: 1.52;
 }
 
 .intro-visual {
@@ -297,14 +309,15 @@ h1 {
 }
 
 .skill-buttons a {
-  min-height: 34px;
+  min-height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--soft-white);
-  border-radius: 7px;
+  border-radius: 8px;
   color: var(--white);
-  font-size: 0.88rem;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
   font-weight: 800;
   text-decoration: none;
   text-transform: uppercase;
@@ -322,7 +335,7 @@ h1 {
 }
 
 .section-heading {
-  width: min(760px, 100%);
+  width: min(820px, 100%);
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -337,17 +350,18 @@ h1 {
 
 .section-heading h2 {
   margin: 0;
-  font-size: clamp(1.7rem, 2.6vw, 2.25rem);
-  font-weight: 400;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(1.85rem, 2.8vw, 2.45rem);
+  font-weight: 500;
   letter-spacing: 0.03em;
   text-transform: uppercase;
 }
 
 .project-grid {
-  width: min(1180px, 100%);
+  width: min(1320px, 100%);
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 86px clamp(44px, 6vw, 96px);
+  gap: 82px clamp(36px, 4.5vw, 76px);
   margin: 0 auto;
 }
 
@@ -398,9 +412,10 @@ h1 {
   justify-content: center;
   margin-bottom: 18px;
   color: var(--white);
-  font-size: clamp(1.2rem, 1.55vw, 1.5rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(1.3rem, 1.7vw, 1.65rem);
+  font-weight: 500;
+  letter-spacing: 0.025em;
   line-height: 1.18;
   text-transform: uppercase;
 }
@@ -409,22 +424,24 @@ h1 {
   min-height: 3.9em;
   margin-bottom: 24px;
   color: var(--soft-white);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   line-height: 1.55;
 }
 
 .read-more {
   min-width: 112px;
-  min-height: 52px;
+  min-height: 50px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0 18px;
   border: 1px solid var(--white);
-  border-radius: 5px;
+  border-radius: 8px;
   background: var(--white);
   color: var(--black);
-  font-size: 0.8rem;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 0.86rem;
   font-weight: 800;
   text-decoration: none;
   text-transform: uppercase;
