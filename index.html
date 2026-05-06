@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dominik Szczepaniak | Dwarfnaut</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,15 +11,18 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img src="images/logo.png" class="logo">
-  <h1>DOMINIK SZCZEPANIAK</h1>
-  <p class="subtitle">DWARFNAUT</p>
+  <div class="hero-inner">
+    <p class="kicker">Portfolio</p>
+    <h1>Dominik Szczepaniak</h1>
+    <p class="subtitle">Dwarfnaut</p>
+  </div>
 </section>
 
 <!-- INTRO -->
 <section class="intro fade-in">
   <p>
-    I'm a Games Design student with a focus on level design and game design...
+    I'm a Games Design student focused on level design, game design, cartography,
+    architecture, and atmospheric worldbuilding.
   </p>
 
   <div class="buttons">
@@ -35,17 +39,28 @@
   <div class="grid">
 
     <div class="card">
-      <img src="images/nosink.jpg">
+      <div class="card-image placeholder">N</div>
       <h3>NOSINK</h3>
-      <p>fast-paced arena platformer...</p>
+      <p>Fast-paced arena platformer built around momentum, timing, and clean combat readability.</p>
       <a href="projects/nosink.html" class="read-more">READ MORE</a>
     </div>
 
-    <!-- repeat for others -->
+    <div class="card">
+      <div class="card-image placeholder">C</div>
+      <h3>CARTOGRAPHY</h3>
+      <p>Maps, routes, regions, and visual systems for believable game spaces.</p>
+      <a href="cartography.html" class="read-more">READ MORE</a>
+    </div>
+
+    <div class="card">
+      <div class="card-image placeholder">A</div>
+      <h3>ARCHITECTURE</h3>
+      <p>Environmental studies and spatial compositions shaped for exploration.</p>
+      <a href="architecture.html" class="read-more">READ MORE</a>
+    </div>
 
   </div>
 </section>
 
-<script src="script.js"></script>
 </body>
 </html>
