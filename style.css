@@ -41,7 +41,7 @@ a {
 }
 
 .site-header {
-  position: fixed;
+  position: absolute;
   z-index: 20;
   top: 0;
   left: 0;
@@ -72,8 +72,7 @@ a {
   text-decoration: none;
 }
 
-.site-nav a:hover,
-.site-nav a.active {
+.site-nav a:hover {
   border-bottom-color: #151515;
 }
 
@@ -128,12 +127,12 @@ a {
   position: absolute;
   left: 50%;
   top: -80px;
-  width: 165vw;
+  width: 100vw;
   height: calc(100% + 135px);
   border-radius: 0 0 50% 50%;
   background:
     linear-gradient(rgba(247, 247, 244, 0.72), rgba(247, 247, 244, 0.72)),
-    url("assets/hero-background.jpg") center / cover no-repeat;
+    url("assets/hero-background.jpg") center top / 100% auto no-repeat;
   transform: translate(-50%, var(--hero-parallax));
   will-change: transform;
 }
@@ -234,7 +233,7 @@ h1 {
   margin-bottom: 0;
   color: var(--soft-white);
   font-size: clamp(1.02rem, 1.08vw, 1.16rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.52;
 }
 
@@ -485,7 +484,7 @@ h1 {
   }
 
   .site-nav {
-    position: fixed;
+    position: absolute;
     inset: var(--header-height) 0 auto 0;
     display: none;
     grid-template-columns: 1fr;
@@ -550,7 +549,7 @@ h1 {
 
   .hero::before {
     top: -70px;
-    width: 210vw;
+    width: 100vw;
     height: calc(100% + 126px);
     border-radius: 0 0 50% 50%;
   }
