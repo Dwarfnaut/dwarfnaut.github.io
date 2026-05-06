@@ -170,7 +170,7 @@ a {
 .hero {
   --hero-parallax: 0px;
   position: relative;
-  min-height: 66vh;
+  min-height: 68vh;
   display: grid;
   place-items: start center;
   padding: calc(var(--header-height) + 28px) 20px 260px;
@@ -182,24 +182,20 @@ a {
 .hero::before {
   content: "";
   position: absolute;
-  inset: -8% 0 0;
+  left: 50%;
+  top: -140px;
+  width: 170vw;
+  height: calc(100% + 220px);
+  border-radius: 0 0 50% 50%;
   background:
-    linear-gradient(rgba(247, 247, 244, 0.78), rgba(247, 247, 244, 0.78)),
+    linear-gradient(rgba(247, 247, 244, 0.72), rgba(247, 247, 244, 0.72)),
     url("assets/hero-background.jpg") center / cover no-repeat;
-  transform: translateY(var(--hero-parallax));
+  transform: translate(-50%, var(--hero-parallax));
   will-change: transform;
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -140px;
-  width: 170vw;
-  height: clamp(220px, 24vw, 430px);
-  border-radius: 50%;
-  background: var(--black);
-  transform: translateX(-50%);
+  display: none;
 }
 
 .hero-content {
@@ -556,16 +552,22 @@ h1 {
   }
 
   .hero {
-    min-height: 56vh;
+    min-height: 58vh;
     padding-top: calc(var(--header-height) + 28px);
     padding-bottom: 170px;
   }
 
-  .hero::after {
-    bottom: -88px;
-    width: 220vw;
-    height: clamp(160px, 44vw, 260px);
+  .hero::before {
+    top: -80px;
+    width: 210vw;
+    height: calc(100% + 150px);
+    border-radius: 0 0 50% 50%;
   }
+
+  .hero::after {
+    display: none;
+  }
+
 
 
 
