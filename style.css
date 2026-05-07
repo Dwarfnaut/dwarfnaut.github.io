@@ -91,7 +91,14 @@ a {
   font-size: 0.86rem;
   font-weight: 800;
   text-transform: uppercase;
+  transition: background 160ms ease, color 160ms ease;
 }
+
+.itch-link:hover {
+  background: var(--white);
+  color: var(--black) !important;
+}
+
 
 .nav-toggle {
   width: 42px;
