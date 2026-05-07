@@ -435,6 +435,37 @@ h1 {
   text-align: center;
 }
 
+/* this is supposed to be just for tilting the cards */
+.project-card {
+  transform-origin: center center;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.project-card:hover {
+  border-color: rgba(243, 234, 215, 0.62);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+@media (min-width: 981px) {
+  .project-card:nth-child(3n + 1):hover {
+    transform: scale(1.045) rotate(-2.4deg);
+  }
+
+  .project-card:nth-child(3n + 2):hover {
+    transform: scale(1.045);
+  }
+
+  .project-card:nth-child(3n):hover {
+    transform: scale(1.045) rotate(2.4deg);
+  }
+}
+
+
+/* until right here the card tilt */
+
 .project-media {
   width: 100%;
   aspect-ratio: 1 / 1;
