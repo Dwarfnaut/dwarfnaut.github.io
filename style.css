@@ -435,7 +435,7 @@ h1 {
   text-align: center;
 }
 
-/* this is supposed to be just for tilting the cards */
+/* this is just for scaling the cards on desktop */
 .project-card {
   transform-origin: center center;
   transition:
@@ -450,21 +450,12 @@ h1 {
 }
 
 @media (min-width: 981px) {
-  .project-card:nth-child(3n + 1):hover {
-    transform: scale(1.045) rotate(-2.4deg);
-  }
-
-  .project-card:nth-child(3n + 2):hover {
+  .project-card:hover {
     transform: scale(1.045);
-  }
-
-  .project-card:nth-child(3n):hover {
-    transform: scale(1.045) rotate(2.4deg);
   }
 }
 
-
-/* until right here the card tilt */
+/* until right here the card scale up */
 
 .project-media {
   width: 100%;
