@@ -437,7 +437,7 @@ h1 {
   justify-items: center;
   align-content: start;
   padding: 18px;
-  border: 1px solid var(--warm-white-soft);
+  border: 1px solid var(--line);
   border-radius: 10px;
   text-align: center;
 }
@@ -452,8 +452,8 @@ h1 {
 }
 
 .project-card:hover {
-  border-color: rgba(243, 234, 215, 0.62);
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+  border-color: rgba(247, 247, 244, 0.62);
+  /* box shadow here? nah */
 }
 
 @media (min-width: 981px) {
