@@ -112,10 +112,10 @@ a {
 
 .hero {
   --hero-parallax: 0px;
-   /*changed from relative to absolute
+  position: relative;
+   /*changed from 48vh to 60vh
   */
-  position: absolute;
-  min-height: 48vh;
+  min-height: 60vh;
   display: grid;
   place-items: start center;
   padding: calc(var(--header-height) + 26px) 20px 250px;
