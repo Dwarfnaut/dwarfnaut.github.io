@@ -360,23 +360,24 @@ h1 {
 }
 
 .skill-buttons {
-  width: min(260px, 100%);
+  width: min(290px, 100%);
   display: grid;
   gap: 24px;
   margin: 0 auto;
 }
 
 .skill-buttons a {
-  min-height: 36px;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: 1px solid var(--soft-white);
-  border-radius: 8px;
+  border-radius: 11px;
   color: var(--white);
   font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
+  letter-spacing: 0.045em;
   text-decoration: none;
   text-transform: uppercase;
   transition: background 160ms ease, color 160ms ease, transform 200ms ease;
