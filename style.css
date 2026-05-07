@@ -309,9 +309,9 @@ h1 {
   letter-spacing: 0.055em;
   text-transform: uppercase;
   text-shadow:
-    0 0 1px rgba(243, 234, 215, 0.98),
-    0 0 5px rgba(243, 234, 215, 0.88),
-    0 0 7px rgba(243, 234, 215, 0.68);
+    0 0 2px rgba(243, 234, 235, 0.98),
+    0 0 5px rgba(243, 234, 235, 0.88),
+    0 0 9px rgba(243, 234, 235, 0.68);
 }
 
 .section-pad {
