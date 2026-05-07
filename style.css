@@ -116,7 +116,7 @@ a {
   min-height: 48vh;
   display: grid;
   place-items: start center;
-  padding: calc(var(--header-height) + 26px) 20px 190px;
+  padding: calc(var(--header-height) + 26px) 20px 250px;
   overflow: hidden;
   background: var(--black);
   color: var(--black);
