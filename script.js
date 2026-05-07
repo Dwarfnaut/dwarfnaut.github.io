@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const dropdownToggle = document.querySelector('.dropdown-toggle');
   const fadeEls = document.querySelectorAll('.fade-in');
 
+  const logoButton = document.querySelector('.logo-wrap');
   
   const hero = document.querySelector('.hero');
 
@@ -26,6 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.setAttribute('aria-expanded', String(isOpen));
     });
   }
+
+  if (logoButton) {
+    logoButton.addEventListener('click', () => {
+      logoButton.classList.remove('ripple');
+      void logoButton.offsetWidth;
+      logoButton.classList.add('ripple');
+    });
+  }
+
   
   document.querySelectorAll('.site-nav a').forEach(link => {
     link.addEventListener('click', () => {
