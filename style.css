@@ -709,10 +709,10 @@ a {
 .hero {
   --hero-parallax: 0px;
   position: relative;
-  min-height: 54vh;
+  min-height: 52vh;
   display: grid;
   place-items: start center;
-  padding: calc(var(--header-height) + 26px) 20px 210px;
+  padding: calc(var(--header-height) + 26px) 20px 190px;
   overflow: hidden;
   background: var(--black);
   color: var(--black);
@@ -721,20 +721,24 @@ a {
 .hero::before {
   content: "";
   position: absolute;
-  left: 50%;
-  top: -110px;
-  width: 118vw;
-  height: calc(100% + 260px);
-  border-radius: 0 0 50% 50%;
+  inset: -8% 0 0;
   background:
     linear-gradient(rgba(247, 247, 244, 0.72), rgba(247, 247, 244, 0.72)),
     url("assets/hero-background.jpg") center top / 100% auto no-repeat;
-  transform: translate(-50%, var(--hero-parallax));
+  transform: translateY(var(--hero-parallax));
   will-change: transform;
 }
 
 .hero::after {
-  display: none;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -215px;
+  width: 150vw;
+  height: 360px;
+  border-radius: 50%;
+  background: var(--black);
+  transform: translateX(-50%);
 }
 
 .hero-content {
@@ -1110,13 +1114,13 @@ h1 {
 
   .hero {
     min-height: 48vh;
-    padding-bottom: 144px;
+    padding-bottom: 150px;
   }
 
-  .hero::before {
-    top: -90px;
-    width: 126vw;
-    height: calc(100% + 220px);
+  .hero::after {
+    bottom: -150px;
+    width: 180vw;
+    height: 260px;
   }
 
   .project-grid {
@@ -1144,16 +1148,19 @@ h1 {
   }
 
   .hero {
-    min-height: 48vh;
+    min-height: 46vh;
     padding-top: calc(var(--header-height) + 28px);
-    padding-bottom: 144px;
+    padding-bottom: 130px;
   }
 
   .hero::before {
-    top: -80px;
-    width: 130vw;
-    height: calc(100% + 190px);
-    border-radius: 0 0 50% 50%;
+    inset: -8% 0 0;
+  }
+
+  .hero::after {
+    bottom: -120px;
+    width: 210vw;
+    height: 220px;
   }
 
   h1 {
@@ -1194,3 +1201,4 @@ h1 {
     font-size: 0.95rem;
   }
 }
+
