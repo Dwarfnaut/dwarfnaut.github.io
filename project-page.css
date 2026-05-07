@@ -1,0 +1,230 @@
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --black: #0b0b0b;
+  --white: #f7f7f4;
+  --ink: #171717;
+  --muted: #5e5e5a;
+  --warm-line: rgba(243, 234, 215, 0.3);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+.project-header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(18px, 3vw, 46px);
+  padding: 10px clamp(16px, 3vw, 38px);
+  background: var(--white);
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: 0.98rem;
+}
+
+.project-header a {
+  border-bottom: 1px solid transparent;
+  padding: 7px 0;
+  text-decoration: none;
+}
+
+.project-header a:hover {
+  border-bottom-color: currentColor;
+}
+
+.itch-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px !important;
+  border: 1px solid var(--black);
+  border-radius: 8px;
+  background: var(--black);
+  color: var(--white);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.project-hero {
+  background: var(--black);
+  color: var(--white);
+  padding: 46px 0 70px;
+  text-align: center;
+}
+
+.project-hero h1 {
+  margin: 0 0 42px;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.media-strip {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(320px, 31vw);
+  gap: 18px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: inline mandatory;
+  padding: 0 clamp(18px, 4vw, 60px) 18px;
+  scrollbar-color: rgba(247, 247, 244, 0.3) transparent;
+}
+
+.media-strip figure {
+  margin: 0;
+  scroll-snap-align: center;
+}
+
+.media-strip img,
+.media-strip video {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: block;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.project-cta {
+  margin-top: 34px;
+}
+
+.project-cta a {
+  min-width: 220px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project-cta a:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.project-body {
+  width: min(1220px, calc(100% - 42px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  gap: clamp(58px, 8vw, 120px);
+  margin: 0 auto;
+  padding: 92px 0 130px;
+}
+
+.project-copy {
+  display: grid;
+  gap: 58px;
+  align-content: start;
+}
+
+.project-copy section {
+  max-width: 720px;
+}
+
+.project-copy h2,
+.process h2 {
+  margin: 0 0 20px;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(1.65rem, 2vw, 2.2rem);
+  font-weight: 500;
+}
+
+.project-copy p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.process {
+  align-content: start;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.process-grid figure {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid rgba(11, 11, 11, 0.1);
+  border-radius: 8px;
+  background: #fbfaf6;
+}
+
+.process-grid a {
+  display: block;
+}
+
+.process-grid img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.process-grid figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.wide-process {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 860px) {
+  .project-header {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .project-hero {
+    padding-top: 34px;
+  }
+
+  .media-strip {
+    grid-auto-columns: minmax(260px, 82vw);
+  }
+
+  .project-body {
+    grid-template-columns: 1fr;
+    gap: 64px;
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 560px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+}
