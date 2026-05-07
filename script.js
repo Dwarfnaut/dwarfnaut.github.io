@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
       navToggle.setAttribute('aria-expanded', String(isOpen));
     });
   }
+  
+  document.querySelectorAll('.site-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      body.classList.remove('menu-open');
+  
+      if (navToggle) {
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
 
   if (dropdown && dropdownToggle) {
     dropdownToggle.addEventListener('click', () => {
