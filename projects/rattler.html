@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rattler | Dominik Szczepaniak</title>
   <link rel="stylesheet" href="../project-page.css">
+  <script src="../project-page.js" defer></script>
 </head>
 
 <body>
@@ -19,23 +20,33 @@
     <section class="project-hero" aria-labelledby="project-title">
       <h1 id="project-title">Rattler</h1>
 
-      <div class="media-strip" aria-label="Rattler media carousel">
-        <figure>
-          <img src="../assets/projects/rattler-gamegif.gif" alt="Rattler gameplay preview">
-        </figure>
-        <figure>
-          <img src="../assets/projects/rattler-01.png" alt="Rattler sewer gate scene">
-        </figure>
-        <figure>
-          <img src="../assets/projects/rattler-02.png" alt="Rattler flooded corridor scene">
-        </figure>
-        <figure>
-          <img src="../assets/projects/rattler-03.png" alt="Rattler concrete hallway scene">
-        </figure>
+      <div class="carousel" data-carousel>
+        <button class="carousel-button carousel-button-prev" type="button" aria-label="Previous image" data-carousel-prev>
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div class="media-strip" aria-label="Rattler media carousel" data-carousel-track>
+          <figure>
+            <img src="../assets/projects/rattler-gamegif.gif" alt="Rattler gameplay preview">
+          </figure>
+          <figure>
+            <img src="../assets/projects/rattler-01.png" alt="Rattler sewer gate scene">
+          </figure>
+          <figure>
+            <img src="../assets/projects/rattler-02.png" alt="Rattler flooded corridor scene">
+          </figure>
+          <figure>
+            <img src="../assets/projects/rattler-03.png" alt="Rattler concrete hallway scene">
+          </figure>
+        </div>
+
+        <button class="carousel-button carousel-button-next" type="button" aria-label="Next image" data-carousel-next>
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
 
       <div class="project-cta">
-        <a href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Game's Itch Page</a>
+        <a href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Itch Page</a>
       </div>
     </section>
 
@@ -119,5 +130,13 @@
       </aside>
     </section>
   </main>
+
+  <a class="home-button" href="../index.html" aria-label="Homepage">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 10.8 12 3l9 7.8"></path>
+      <path d="M5.5 9.5V21h13V9.5"></path>
+      <path d="M9.5 21v-6h5v6"></path>
+    </svg>
+  </a>
 </body>
 </html>
