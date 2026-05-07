@@ -116,7 +116,7 @@ a {
   min-height: 48vh;
   display: grid;
   place-items: start center;
-  padding: calc(var(--header-height) + 26px) 20px 150px;
+  padding: calc(var(--header-height) + 26px) 20px 190px;
   overflow: hidden;
   background: var(--black);
   color: var(--black);
@@ -131,7 +131,7 @@ a {
   height: calc(100% + 135px);
   border-radius: 0 0 50% 50%;
   background:
-    linear-gradient(rgba(247, 247, 244, 0.72), rgba(247, 247, 244, 0.72)),
+    linear-gradient(rgba(247, 247, 244, 0.6), rgba(247, 247, 244, 0.6)),
     url("assets/hero-background.jpg") center top / 100% auto no-repeat;
   transform: translate(-50%, var(--hero-parallax));
   will-change: transform;
