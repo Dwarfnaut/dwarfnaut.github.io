@@ -113,9 +113,9 @@ a {
 .hero {
   --hero-parallax: 0px;
   position: relative;
-   /*changed from 48vh to 60vh
+   /*changed from 48vh to 28vh
   */
-  min-height: 60vh;
+  min-height: 28vh;
   display: grid;
   place-items: start center;
   padding: calc(var(--header-height) + 26px) 20px 250px;
