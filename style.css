@@ -740,6 +740,36 @@ h1 {
   }
 }
 
+@media (max-width: 640px) {
+  #projects.fade-in,
+  #projects.fade-in.visible,
+  .project-card,
+  .project-media,
+  .project-media img,
+  .project-card h3,
+  .project-card p,
+  .project-card .read-more {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  .project-card {
+    display: grid !important;
+  }
+
+  .project-media {
+    display: block !important;
+    min-height: 220px;
+  }
+
+  .project-card h3,
+  .project-card p {
+    min-height: 0 !important;
+  }
+}
+
+
 
 
 
