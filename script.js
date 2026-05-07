@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const fadeEls = document.querySelectorAll('.fade-in');
 
   const logoButton = document.querySelector('.logo-wrap');
-  
+  const topButton = document.querySelector('.top-button');
   const hero = document.querySelector('.hero');
 
   const updateHeroParallax = () => {
@@ -97,4 +97,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   fadeEls.forEach(el => observer.observe(el));
+
+  //TOP BUTTON - for going back to the top of the page
+  if (topButton) {
+  const updateTopButton = () => {
+    topButton.classList.toggle('visible', window.scrollY > 420);
+  };
+
+  topButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  updateTopButton();
+  window.addEventListener('scroll', updateTopButton, { passive: true });
+}
+
 });
