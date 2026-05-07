@@ -379,12 +379,13 @@ h1 {
   font-weight: 400;
   text-decoration: none;
   text-transform: uppercase;
-  transition: background 160ms ease, color 160ms ease;
+  transition: background 160ms ease, color 160ms ease, transform 200ms ease;
 }
 
 .skill-buttons a:hover {
   background: var(--white);
   color: var(--black);
+  transform: scale(1.035);
 }
 
 .projects {
