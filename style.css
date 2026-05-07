@@ -944,7 +944,7 @@ h1 {
 .skill-buttons {
   width: min(260px, 100%);
   display: grid;
-  gap: 22px;
+  gap: 24px;
   margin: 0 auto;
 }
 
@@ -1057,7 +1057,7 @@ h1 {
   font-weight: 500;
   letter-spacing: 0.025em;
   line-height: 1.18;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .project-card p {
