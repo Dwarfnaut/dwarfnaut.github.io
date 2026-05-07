@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>One Thousand Tea Kiosks | Dominik Szczepaniak</title>
   <link rel="stylesheet" href="../project-page.css">
+  <script src="../project-page.js" defer></script>
 </head>
 
 <body>
@@ -19,23 +20,33 @@
     <section class="project-hero" aria-labelledby="project-title">
       <h1 id="project-title">One Thousand Tea Kiosks</h1>
 
-      <div class="media-strip" aria-label="One Thousand Tea Kiosks media carousel">
-        <figure>
-          <img src="../assets/projects/teakiosks-gamegif.gif" alt="One Thousand Tea Kiosks gameplay preview">
-        </figure>
-        <figure>
-          <img src="../assets/projects/teakiosks-01.png" alt="Tea kiosk generator menu">
-        </figure>
-        <figure>
-          <img src="../assets/projects/teakiosks-02.png" alt="Generated gloomy tea kiosk">
-        </figure>
-        <figure>
-          <img src="../assets/projects/teakiosks-03.png" alt="Tea kiosk variation preview">
-        </figure>
+      <div class="carousel" data-carousel>
+        <button class="carousel-button carousel-button-prev" type="button" aria-label="Previous image" data-carousel-prev>
+          <span aria-hidden="true">←</span>
+        </button>
+
+        <div class="media-strip" aria-label="One Thousand Tea Kiosks media carousel" data-carousel-track>
+          <figure>
+            <img src="../assets/projects/teakiosks-gamegif.gif" alt="One Thousand Tea Kiosks gameplay preview">
+          </figure>
+          <figure>
+            <img src="../assets/projects/teakiosks-01.png" alt="Tea kiosk generator menu">
+          </figure>
+          <figure>
+            <img src="../assets/projects/teakiosks-02.png" alt="Generated gloomy tea kiosk">
+          </figure>
+          <figure>
+            <img src="../assets/projects/teakiosks-03.png" alt="Tea kiosk variation preview">
+          </figure>
+        </div>
+
+        <button class="carousel-button carousel-button-next" type="button" aria-label="Next image" data-carousel-next>
+          <span aria-hidden="true">→</span>
+        </button>
       </div>
 
       <div class="project-cta">
-        <a href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Game's Itch Page</a>
+        <a href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Itch Page</a>
       </div>
     </section>
 
@@ -117,5 +128,13 @@
       </aside>
     </section>
   </main>
+
+  <a class="home-button" href="../index.html" aria-label="Homepage">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 10.8 12 3l9 7.8"></path>
+      <path d="M5.5 9.5V21h13V9.5"></path>
+      <path d="M9.5 21v-6h5v6"></path>
+    </svg>
+  </a>
 </body>
 </html>
