@@ -78,8 +78,11 @@ a {
   letter-spacing: 0.04em;
 }
 
-.media-strip {
+.carousel {
   position: relative;
+}
+
+.media-strip {
   width: 100%;
   display: grid;
   grid-auto-flow: column;
@@ -90,6 +93,41 @@ a {
   scroll-snap-type: inline mandatory;
   padding: 0 clamp(18px, 4vw, 60px) 18px;
   scrollbar-color: rgba(247, 247, 244, 0.3) transparent;
+}
+
+.carousel-button {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(247, 247, 244, 0.28);
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.76);
+  color: var(--white);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.carousel-button:hover {
+  background: rgba(247, 247, 244, 0.94);
+  color: var(--black);
+}
+
+.carousel-button span {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.carousel-button-prev {
+  left: clamp(16px, 4vw, 52px);
+}
+
+.carousel-button-next {
+  right: clamp(16px, 4vw, 52px);
 }
 
 .media-strip figure {
@@ -128,6 +166,37 @@ a {
 .project-cta a:hover {
   background: var(--white);
   color: var(--black);
+}
+
+.home-button {
+  position: fixed;
+  z-index: 30;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(11, 11, 11, 0.28);
+  border-radius: 50%;
+  background: rgba(247, 247, 244, 0.92);
+  color: var(--black);
+  box-shadow: 0 12px 30px rgba(11, 11, 11, 0.16);
+}
+
+.home-button:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.home-button svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
 
 .project-body {
@@ -216,6 +285,11 @@ a {
     grid-auto-columns: minmax(260px, 82vw);
   }
 
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+  }
+
   .project-body {
     grid-template-columns: 1fr;
     gap: 64px;
@@ -226,5 +300,12 @@ a {
 @media (max-width: 560px) {
   .process-grid {
     grid-template-columns: 1fr;
+  }
+
+  .home-button {
+    right: 16px;
+    bottom: 16px;
+    width: 42px;
+    height: 42px;
   }
 }
