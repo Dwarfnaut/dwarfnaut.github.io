@@ -938,6 +938,130 @@ h1 {
   }
 }
 
+/* Skill pages */
+/* Skill pages BELOW */
+/* Skill pages ----------------------------------------------------------------------------------- */
+/* Skill pages BELOW */
+/* Skill pages */
+
+.skill-page {
+  background: var(--black);
+  color: var(--white);
+}
+
+.skill-main {
+  width: min(1320px, calc(100% - 44px));
+  margin: 0 auto;
+  padding: 150px 0 110px;
+  text-align: left;
+}
+
+.skill-intro {
+  max-width: 1180px;
+}
+
+.skill-intro h1 {
+  margin-bottom: 34px;
+  color: var(--white);
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-shadow: none;
+}
+
+.skill-copy {
+  max-width: 1180px;
+  display: grid;
+  gap: 0;
+}
+
+.skill-copy p,
+.skill-list,
+.skill-list li {
+  color: var(--soft-white);
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  font-weight: 400;
+  line-height: 1.72;
+}
+
+.skill-copy p {
+  margin: 0;
+}
+
+.skill-list {
+  margin-top: 72px;
+}
+
+.skill-list p {
+  margin: 0 0 22px;
+  font-weight: 700;
+}
+
+.skill-list ul {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding-left: 34px;
+}
+
+.art-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 150px;
+}
+
+.art-gallery a {
+  display: block;
+  overflow: hidden;
+  background: var(--deep);
+}
+
+.art-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.art-gallery a:hover img {
+  transform: scale(1.035);
+  filter: brightness(1.08);
+}
+
+@media (max-width: 980px) {
+  .skill-main {
+    padding-top: 120px;
+  }
+
+  .art-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .skill-main {
+    width: min(100% - 32px, 1320px);
+    padding-top: 96px;
+    padding-bottom: 80px;
+  }
+
+  .skill-list {
+    margin-top: 48px;
+  }
+
+  .art-gallery {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 72px;
+  }
+}
+
+
 
 
 
