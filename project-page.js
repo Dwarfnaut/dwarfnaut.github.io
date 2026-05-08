@@ -8,32 +8,55 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    carousel.style.setProperty('--carousel-card-width', 'clamp(520px, 31vw, 690px)');
-    carousel.style.setProperty('--carousel-gap', '20px');
-    carousel.style.overflow = 'hidden';
-    track.style.display = 'flex';
-    track.style.gap = 'var(--carousel-gap)';
-    track.style.width = '100%';
-    track.style.overflow = 'visible';
-    track.style.scrollBehavior = 'auto';
-    track.style.scrollSnapType = 'none';
-    track.style.willChange = 'transform';
-
     const originalItems = Array.from(track.querySelectorAll('figure'));
 
     if (originalItems.length === 0) {
       return;
     }
 
-    originalItems.forEach(item => {
+    const applyCarouselStyles = () => {
+      carousel.style.setProperty('--carousel-card-width', 'clamp(540px, 31vw, 680px)');
+      carousel.style.setProperty('--carousel-gap', '20px');
+      carousel.style.position = 'relative';
+      carousel.style.left = '50%';
+      carousel.style.width = '100vw';
+      carousel.style.marginLeft = '-50vw';
+      carousel.style.marginRight = '-50vw';
+      carousel.style.overflow = 'hidden';
+
+      track.style.display = 'flex';
+      track.style.gap = 'var(--carousel-gap)';
+      track.style.width = 'max-content';
+      track.style.margin = '0';
+      track.style.padding = '0 0 18px';
+      track.style.overflow = 'visible';
+      track.style.overflowX = 'visible';
+      track.style.scrollSnapType = 'none';
+      track.style.scrollBehavior = 'auto';
+      track.style.transition = 'none';
+      track.style.willChange = 'transform';
+      track.style.cursor = 'grab';
+      track.style.userSelect = 'none';
+      track.style.webkitUserSelect = 'none';
+      track.style.touchAction = 'pan-y';
+    };
+
+    const applyItemStyles = item => {
       item.style.flex = '0 0 var(--carousel-card-width)';
       item.style.margin = '0';
-    });
+      item.style.scrollSnapAlign = 'none';
 
-    track.querySelectorAll('img, video').forEach(media => {
-      media.setAttribute('draggable', 'false');
-      media.addEventListener('dragstart', event => event.preventDefault());
-    });
+      item.querySelectorAll('img, video').forEach(media => {
+        media.setAttribute('draggable', 'false');
+        media.style.pointerEvents = 'none';
+        media.style.userSelect = 'none';
+        media.style.webkitUserDrag = 'none';
+        media.addEventListener('dragstart', event => event.preventDefault());
+      });
+    };
+
+    applyCarouselStyles();
+    originalItems.forEach(applyItemStyles);
 
     if (originalItems.length === 1) {
       prev.hidden = true;
@@ -45,12 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const clone = item.cloneNode(true);
       clone.dataset.clone = 'true';
       clone.setAttribute('aria-hidden', 'true');
-      clone.style.flex = '0 0 var(--carousel-card-width)';
-      clone.style.margin = '0';
-      clone.querySelectorAll('img, video').forEach(media => {
-        media.setAttribute('draggable', 'false');
-        media.addEventListener('dragstart', event => event.preventDefault());
-      });
+      applyItemStyles(clone);
       return clone;
     };
 
@@ -63,76 +81,109 @@ document.addEventListener('DOMContentLoaded', () => {
     let items = Array.from(track.querySelectorAll('figure'));
     const realCount = originalItems.length;
     let currentIndex = realCount;
-    let dragDelta = 0;
+    let cardWidth = 0;
+    let gap = 0;
+    let step = 0;
+    let centerOffset = 0;
+    let currentTranslate = 0;
+    let targetTranslate = 0;
+    let animationFrame = 0;
     let isDragging = false;
     let hasDragged = false;
     let startX = 0;
+    let startTranslate = 0;
+    let dragDelta = 0;
     let lastX = 0;
     let lastTime = 0;
     let velocity = 0;
-    let normalizeTimer = 0;
 
-    const getGap = () => parseFloat(getComputedStyle(track).gap || '0');
+    const easeOutCubic = progress => 1 - Math.pow(1 - progress, 3);
 
-    const getCardWidth = () => {
-      const firstItem = items[0];
-      return firstItem ? firstItem.getBoundingClientRect().width : carousel.clientWidth;
+    const translateForIndex = index => centerOffset - index * step;
+
+    const render = value => {
+      currentTranslate = value;
+      track.scrollLeft = 0;
+      track.style.transform = `translate3d(${value}px, 0, 0)`;
     };
 
-    const getStep = () => getCardWidth() + (Number.isFinite(getGap()) ? getGap() : 0);
+    const measure = () => {
+      applyCarouselStyles();
+      items = Array.from(track.querySelectorAll('figure'));
+      items.forEach(applyItemStyles);
 
-    const getCenteredTranslate = (index, delta = 0) => {
-      const centerOffset = (carousel.clientWidth - getCardWidth()) / 2;
-      return centerOffset - index * getStep() + delta;
-    };
-
-    const setPosition = ({ animate = false, delta = 0 } = {}) => {
-      track.classList.toggle('is-animating', animate);
-      track.style.transform = `translate3d(${getCenteredTranslate(currentIndex, delta)}px, 0, 0)`;
+      cardWidth = items[0].getBoundingClientRect().width;
+      gap = parseFloat(getComputedStyle(track).gap) || 0;
+      step = cardWidth + gap;
+      centerOffset = (window.innerWidth - cardWidth) / 2;
+      targetTranslate = translateForIndex(currentIndex);
+      render(targetTranslate);
     };
 
     const normalizeIndex = () => {
-      window.clearTimeout(normalizeTimer);
-
       if (currentIndex < realCount) {
         currentIndex += realCount;
-        setPosition();
+        render(translateForIndex(currentIndex));
       } else if (currentIndex >= realCount * 2) {
         currentIndex -= realCount;
-        setPosition();
+        render(translateForIndex(currentIndex));
       }
     };
 
-    const finishAnimatedMove = () => {
-      normalizeTimer = window.setTimeout(normalizeIndex, 680);
+    const stopAnimation = () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+        animationFrame = 0;
+      }
+    };
+
+    const animateToIndex = (index, duration = 620) => {
+      stopAnimation();
+      currentIndex = index;
+      targetTranslate = translateForIndex(currentIndex);
+
+      const from = currentTranslate;
+      const distance = targetTranslate - from;
+      const startedAt = performance.now();
+
+      const tick = now => {
+        const progress = Math.min(1, (now - startedAt) / duration);
+        render(from + distance * easeOutCubic(progress));
+
+        if (progress < 1) {
+          animationFrame = requestAnimationFrame(tick);
+          return;
+        }
+
+        animationFrame = 0;
+        render(targetTranslate);
+        normalizeIndex();
+      };
+
+      animationFrame = requestAnimationFrame(tick);
     };
 
     const go = amount => {
-      currentIndex += amount;
-      dragDelta = 0;
-      setPosition({ animate: true });
-      finishAnimatedMove();
+      animateToIndex(currentIndex + amount);
     };
 
     prev.addEventListener('click', () => go(-1));
     next.addEventListener('click', () => go(1));
 
-    track.addEventListener('transitionend', event => {
-      if (event.propertyName === 'transform') {
-        normalizeIndex();
-      }
-    });
-
     track.addEventListener('pointerdown', event => {
+      stopAnimation();
+      normalizeIndex();
+
       isDragging = true;
       hasDragged = false;
       dragDelta = 0;
       startX = event.clientX;
+      startTranslate = currentTranslate;
       lastX = event.clientX;
       lastTime = performance.now();
       velocity = 0;
       track.classList.add('is-dragging');
-      track.classList.remove('is-animating');
+      track.style.cursor = 'grabbing';
       track.setPointerCapture(event.pointerId);
     });
 
@@ -143,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const now = performance.now();
       const elapsed = Math.max(1, now - lastTime);
+
       dragDelta = event.clientX - startX;
       velocity = (event.clientX - lastX) / elapsed;
       lastX = event.clientX;
@@ -152,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hasDragged = true;
       }
 
-      setPosition({ delta: dragDelta });
+      render(startTranslate + dragDelta);
     });
 
     const stopDragging = event => {
@@ -162,33 +214,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
       isDragging = false;
       track.classList.remove('is-dragging');
+      track.style.cursor = 'grab';
 
       if (track.hasPointerCapture(event.pointerId)) {
         track.releasePointerCapture(event.pointerId);
       }
 
-      const projectedDelta = dragDelta + velocity * 260;
-      let slideChange = Math.round(-projectedDelta / getStep());
+      const projectedDelta = dragDelta + velocity * 320;
+      let slideChange = Math.round(-projectedDelta / step);
 
-      if (slideChange === 0 && Math.abs(projectedDelta) > Math.min(120, getStep() * 0.2)) {
+      if (slideChange === 0 && Math.abs(projectedDelta) > Math.min(120, step * 0.18)) {
         slideChange = projectedDelta < 0 ? 1 : -1;
       }
 
       slideChange = Math.max(-2, Math.min(2, slideChange));
-
-      currentIndex += slideChange;
-      dragDelta = 0;
-      setPosition({ animate: true });
-      finishAnimatedMove();
+      animateToIndex(currentIndex + slideChange);
     };
 
     track.addEventListener('pointerup', stopDragging);
     track.addEventListener('pointercancel', stopDragging);
     track.addEventListener('lostpointercapture', () => {
+      if (!isDragging) {
+        return;
+      }
+
       isDragging = false;
-      dragDelta = 0;
       track.classList.remove('is-dragging');
-      setPosition({ animate: true });
+      track.style.cursor = 'grab';
+      animateToIndex(currentIndex);
     });
 
     track.addEventListener('click', event => {
@@ -197,11 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    window.addEventListener('resize', () => {
-      items = Array.from(track.querySelectorAll('figure'));
-      setPosition();
-    });
+    window.addEventListener('resize', measure);
 
-    requestAnimationFrame(() => setPosition());
+    requestAnimationFrame(measure);
   });
 });
