@@ -80,24 +80,28 @@ a {
 
 .carousel {
   position: relative;
-  width: min(1900px, calc(100% - clamp(36px, 6vw, 84px)));
+  --carousel-peek: clamp(54px, 5.5vw, 112px);
+  width: min(2100px, 100%);
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .media-strip {
   width: 100%;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 36px) / 3);
+  grid-auto-columns: calc((100% - (var(--carousel-peek) * 2) - 36px) / 3);
   gap: 18px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
-  padding: 0 0 18px;
+  padding: 0 var(--carousel-peek) 18px;
   scrollbar-color: rgba(247, 247, 244, 0.3) transparent;
+  scrollbar-width: none;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
+  touch-action: pan-y;
 }
 
 .media-strip::-webkit-scrollbar {
@@ -156,6 +160,9 @@ a {
   display: block;
   object-fit: cover;
   border-radius: 2px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .project-cta {
@@ -296,11 +303,12 @@ a {
   }
 
   .carousel {
-    width: min(980px, calc(100% - 44px));
+    --carousel-peek: clamp(26px, 6vw, 52px);
+    width: 100%;
   }
 
   .media-strip {
-    grid-auto-columns: calc((100% - 18px) / 2);
+    grid-auto-columns: calc((100% - (var(--carousel-peek) * 2) - 18px) / 2);
   }
 
   .carousel-button {
@@ -317,11 +325,12 @@ a {
 
 @media (max-width: 560px) {
   .carousel {
-    width: min(520px, calc(100% - 28px));
+    --carousel-peek: 22px;
+    width: 100%;
   }
 
   .media-strip {
-    grid-auto-columns: 100%;
+    grid-auto-columns: calc(100% - (var(--carousel-peek) * 2));
   }
 
   .process-grid {
