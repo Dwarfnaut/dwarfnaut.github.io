@@ -113,6 +113,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   updateTopButton();
   window.addEventListener('scroll', updateTopButton, { passive: true });
-}
+  }
 
+//LIGHT BOX FOR SKILL PAGES (images)
+  const lightbox = document.querySelector('.lightbox');
+  const lightboxImage = document.querySelector('.lightbox-image');
+  const lightboxClose = document.querySelector('.lightbox-close');
+  
+  if (lightbox && lightboxImage && lightboxClose) {
+    document.querySelectorAll('.art-gallery a').forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+  
+        const image = link.querySelector('img');
+        lightboxImage.src = link.href;
+        lightboxImage.alt = image ? image.alt : '';
+  
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+      });
+    });
+  
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+      lightboxImage.src = '';
+      lightboxImage.alt = '';
+    };
+  
+    lightboxClose.addEventListener('click', closeLightbox);
+  
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && lightbox.classList.contains('open')) {
+        closeLightbox();
+      }
+    });
+  }
+
+  
 });
