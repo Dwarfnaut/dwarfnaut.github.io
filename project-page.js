@@ -8,11 +8,27 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    carousel.style.setProperty('--carousel-card-width', 'clamp(520px, 31vw, 690px)');
+    carousel.style.setProperty('--carousel-gap', '20px');
+    carousel.style.overflow = 'hidden';
+    track.style.display = 'flex';
+    track.style.gap = 'var(--carousel-gap)';
+    track.style.width = '100%';
+    track.style.overflow = 'visible';
+    track.style.scrollBehavior = 'auto';
+    track.style.scrollSnapType = 'none';
+    track.style.willChange = 'transform';
+
     const originalItems = Array.from(track.querySelectorAll('figure'));
 
     if (originalItems.length === 0) {
       return;
     }
+
+    originalItems.forEach(item => {
+      item.style.flex = '0 0 var(--carousel-card-width)';
+      item.style.margin = '0';
+    });
 
     track.querySelectorAll('img, video').forEach(media => {
       media.setAttribute('draggable', 'false');
@@ -29,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const clone = item.cloneNode(true);
       clone.dataset.clone = 'true';
       clone.setAttribute('aria-hidden', 'true');
+      clone.style.flex = '0 0 var(--carousel-card-width)';
+      clone.style.margin = '0';
       clone.querySelectorAll('img, video').forEach(media => {
         media.setAttribute('draggable', 'false');
         media.addEventListener('dragstart', event => event.preventDefault());
@@ -61,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return firstItem ? firstItem.getBoundingClientRect().width : carousel.clientWidth;
     };
 
-    const getStep = () => getCardWidth() + getGap();
+    const getStep = () => getCardWidth() + (Number.isFinite(getGap()) ? getGap() : 0);
 
     const getCenteredTranslate = (index, delta = 0) => {
       const centerOffset = (carousel.clientWidth - getCardWidth()) / 2;
