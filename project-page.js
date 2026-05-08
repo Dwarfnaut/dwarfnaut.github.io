@@ -8,6 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    const originalItems = Array.from(track.querySelectorAll('figure'));
+
+    if (originalItems.length > 1) {
+      const firstClone = originalItems[0].cloneNode(true);
+      const lastClone = originalItems[originalItems.length - 1].cloneNode(true);
+
+      firstClone.dataset.clone = 'true';
+      lastClone.dataset.clone = 'true';
+
+      firstClone.setAttribute('aria-hidden', 'true');
+      lastClone.setAttribute('aria-hidden', 'true');
+
+      track.insertBefore(lastClone, originalItems[0]);
+      track.appendChild(firstClone);
+    }
+
     track.querySelectorAll('img, video').forEach(media => {
       media.setAttribute('draggable', 'false');
       media.addEventListener('dragstart', event => event.preventDefault());
@@ -23,20 +39,35 @@ document.addEventListener('DOMContentLoaded', () => {
       return firstItem.getBoundingClientRect().width + gap;
     };
 
+    const getRealStart = () => getStep();
+    const getRealEnd = () => getStep() * originalItems.length;
+
+    const jumpTo = left => {
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = left;
+      track.offsetHeight;
+      track.style.scrollBehavior = '';
+    };
+
+    const normalizeLoop = () => {
+      if (originalItems.length <= 1) {
+        return;
+      }
+
+      const realStart = getRealStart();
+      const realEnd = getRealEnd();
+      const tolerance = Math.max(4, getStep() * 0.18);
+
+      if (track.scrollLeft < realStart - tolerance) {
+        jumpTo(realEnd);
+      }
+
+      if (track.scrollLeft > realEnd + tolerance) {
+        jumpTo(realStart);
+      }
+    };
+
     const go = direction => {
-      const maxScroll = track.scrollWidth - track.clientWidth;
-      const nextLeft = track.scrollLeft + getStep() * direction;
-
-      if (direction > 0 && nextLeft >= maxScroll - 8) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-        return;
-      }
-
-      if (direction < 0 && nextLeft <= 8) {
-        track.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        return;
-      }
-
       track.scrollBy({ left: getStep() * direction, behavior: 'smooth' });
     };
 
@@ -53,6 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const nearest = Math.round(track.scrollLeft / step) * step;
       track.scrollTo({ left: nearest, behavior: 'smooth' });
     };
+
+    const startOnFirstRealSlide = () => {
+      requestAnimationFrame(() => {
+        jumpTo(getRealStart());
+      });
+    };
+
+    startOnFirstRealSlide();
 
     track.addEventListener('pointerdown', event => {
       isDragging = true;
@@ -104,5 +143,12 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault();
       }
     });
+
+    track.addEventListener('scroll', () => {
+      window.clearTimeout(track.loopTimer);
+      track.loopTimer = window.setTimeout(normalizeLoop, 90);
+    }, { passive: true });
+
+    window.addEventListener('resize', startOnFirstRealSlide);
   });
 });
