@@ -48,3 +48,56 @@ document.addEventListener('DOMContentLoaded', () => {
       const nearest = Math.round(track.scrollLeft / step) * step;
       track.scrollTo({ left: nearest, behavior: 'smooth' });
     };
+
+    track.addEventListener('pointerdown', event => {
+      isDragging = true;
+      hasDragged = false;
+      startX = event.clientX;
+      startScrollLeft = track.scrollLeft;
+      track.classList.add('is-dragging');
+      track.setPointerCapture(event.pointerId);
+    });
+
+    track.addEventListener('pointermove', event => {
+      if (!isDragging) {
+        return;
+      }
+
+      const distance = event.clientX - startX;
+
+      if (Math.abs(distance) > 4) {
+        hasDragged = true;
+      }
+
+      track.scrollLeft = startScrollLeft - distance;
+    });
+
+    const stopDragging = event => {
+      if (!isDragging) {
+        return;
+      }
+
+      isDragging = false;
+      track.classList.remove('is-dragging');
+
+      if (track.hasPointerCapture(event.pointerId)) {
+        track.releasePointerCapture(event.pointerId);
+      }
+
+      snapToNearestItem();
+    };
+
+    track.addEventListener('pointerup', stopDragging);
+    track.addEventListener('pointercancel', stopDragging);
+    track.addEventListener('lostpointercapture', () => {
+      isDragging = false;
+      track.classList.remove('is-dragging');
+    });
+
+    track.addEventListener('click', event => {
+      if (hasDragged) {
+        event.preventDefault();
+      }
+    });
+  });
+});
