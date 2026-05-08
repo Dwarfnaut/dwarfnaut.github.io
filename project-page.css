@@ -21,6 +21,7 @@ body {
   background: var(--white);
   color: var(--ink);
   font-family: "Poppins", Arial, Helvetica, sans-serif;
+  text-align: justify;
 }
 
 a {
@@ -37,6 +38,7 @@ a {
   background: var(--white);
   font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
   font-size: 0.98rem;
+  text-align: left;
 }
 
 .project-header a {
@@ -80,7 +82,8 @@ a {
 
 .carousel {
   position: relative;
-  --carousel-card-width: clamp(420px, 31vw, 650px);
+  --carousel-card-width: clamp(520px, 31vw, 690px);
+  --carousel-gap: 20px;
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
@@ -88,21 +91,14 @@ a {
 
 .media-strip {
   width: 100%;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: var(--carousel-card-width);
-  gap: 18px;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  scroll-padding-inline: calc((100% - var(--carousel-card-width)) / 2);
-  padding: 0 calc((100% - var(--carousel-card-width)) / 2) 18px;
-  scrollbar-color: rgba(247, 247, 244, 0.3) transparent;
-  scrollbar-width: none;
+  display: flex;
+  gap: var(--carousel-gap);
+  padding: 0 0 18px;
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
   touch-action: pan-y;
+  will-change: transform;
 }
 
 .media-strip::-webkit-scrollbar {
@@ -111,7 +107,10 @@ a {
 
 .media-strip.is-dragging {
   cursor: grabbing;
-  scroll-snap-type: none;
+}
+
+.media-strip.is-animating {
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .carousel-button {
@@ -150,8 +149,8 @@ a {
 }
 
 .media-strip figure {
+  flex: 0 0 var(--carousel-card-width);
   margin: 0;
-  scroll-snap-align: center;
 }
 
 .media-strip img,
@@ -252,6 +251,7 @@ a {
   margin: 0 0 18px;
   color: var(--muted);
   line-height: 1.72;
+  text-align: justify;
 }
 
 .process {
@@ -270,6 +270,15 @@ a {
   border: 1px solid rgba(11, 11, 11, 0.1);
   border-radius: 8px;
   background: #fbfaf6;
+  cursor: zoom-in;
+  transform-origin: center;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.process-grid figure:hover {
+  border-color: rgba(11, 11, 11, 0.24);
+  box-shadow: 0 16px 34px rgba(11, 11, 11, 0.12);
+  transform: scale(1.035);
 }
 
 .process-grid a {
@@ -286,10 +295,99 @@ a {
   margin-top: 8px;
   color: var(--muted);
   font-size: 0.82rem;
+  text-align: left;
 }
 
 .wide-process {
   grid-column: 1 / -1;
+}
+
+.process-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  padding: clamp(20px, 4vw, 58px);
+  background: rgba(11, 11, 11, 0.72);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.process-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.process-lightbox-panel {
+  width: min(1280px, 96vw);
+  max-height: min(820px, 88vh);
+  display: grid;
+  grid-template-columns: minmax(240px, 0.42fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 58px);
+  align-items: center;
+  padding: clamp(20px, 3vw, 38px);
+  border: 1px solid rgba(247, 247, 244, 0.18);
+  border-radius: 8px;
+  background: #f7f7f4;
+  color: var(--ink);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.34);
+  transform: scale(0.94);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.process-lightbox.is-open .process-lightbox-panel {
+  transform: scale(1);
+}
+
+.process-lightbox-text {
+  align-self: center;
+}
+
+.process-lightbox-text h3 {
+  margin: 0 0 14px;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 500;
+  text-align: left;
+}
+
+.process-lightbox-text p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+  text-align: justify;
+}
+
+.process-lightbox-image {
+  max-width: 100%;
+  max-height: calc(88vh - 76px);
+  display: block;
+  justify-self: center;
+  object-fit: contain;
+}
+
+.process-lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(247, 247, 244, 0.42);
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.72);
+  color: var(--white);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.process-lightbox-close:hover {
+  background: var(--white);
+  color: var(--black);
 }
 
 @media (max-width: 860px) {
@@ -304,7 +402,8 @@ a {
   }
 
   .carousel {
-    --carousel-card-width: clamp(300px, 46vw, 470px);
+    --carousel-card-width: clamp(300px, 50vw, 500px);
+    --carousel-gap: 18px;
     width: 100%;
   }
 
@@ -326,11 +425,26 @@ a {
     gap: 64px;
     padding-top: 70px;
   }
+
+  .process-lightbox-panel {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+
+  .process-lightbox-text {
+    order: 2;
+  }
+
+  .process-lightbox-image {
+    order: 1;
+    max-height: 54vh;
+  }
 }
 
 @media (max-width: 560px) {
   .carousel {
     --carousel-card-width: 82vw;
+    --carousel-gap: 14px;
     width: 100%;
   }
 
