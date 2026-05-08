@@ -80,8 +80,8 @@ a {
 
 .carousel {
   position: relative;
-  --carousel-peek: clamp(54px, 5.5vw, 112px);
-  width: min(2100px, 100%);
+  --carousel-card-width: clamp(420px, 31vw, 650px);
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -90,12 +90,13 @@ a {
   width: 100%;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100% - (var(--carousel-peek) * 2) - 36px) / 3);
+  grid-auto-columns: var(--carousel-card-width);
   gap: 18px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scroll-snap-type: inline mandatory;
-  padding: 0 var(--carousel-peek) 18px;
+  scroll-padding-inline: calc((100% - var(--carousel-card-width)) / 2);
+  padding: 0 calc((100% - var(--carousel-card-width)) / 2) 18px;
   scrollbar-color: rgba(247, 247, 244, 0.3) transparent;
   scrollbar-width: none;
   cursor: grab;
@@ -141,16 +142,16 @@ a {
 }
 
 .carousel-button-prev {
-  left: clamp(12px, 2vw, 28px);
+  left: clamp(84px, 9vw, 150px);
 }
 
 .carousel-button-next {
-  right: clamp(12px, 2vw, 28px);
+  right: clamp(84px, 9vw, 150px);
 }
 
 .media-strip figure {
   margin: 0;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 
 .media-strip img,
@@ -303,17 +304,21 @@ a {
   }
 
   .carousel {
-    --carousel-peek: clamp(26px, 6vw, 52px);
+    --carousel-card-width: clamp(300px, 46vw, 470px);
     width: 100%;
-  }
-
-  .media-strip {
-    grid-auto-columns: calc((100% - (var(--carousel-peek) * 2) - 18px) / 2);
   }
 
   .carousel-button {
     width: 40px;
     height: 40px;
+  }
+
+  .carousel-button-prev {
+    left: 22px;
+  }
+
+  .carousel-button-next {
+    right: 22px;
   }
 
   .project-body {
@@ -325,12 +330,8 @@ a {
 
 @media (max-width: 560px) {
   .carousel {
-    --carousel-peek: 22px;
+    --carousel-card-width: 82vw;
     width: 100%;
-  }
-
-  .media-strip {
-    grid-auto-columns: calc(100% - (var(--carousel-peek) * 2));
   }
 
   .process-grid {
