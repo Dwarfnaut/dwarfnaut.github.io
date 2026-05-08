@@ -37,5 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     prev.addEventListener('click', () => go(-1));
     next.addEventListener('click', () => go(1));
-  });
-});
+
+    let isDragging = false;
+    let startX = 0;
+    let startScrollLeft = 0;
+    let hasDragged = false;
+
+    const snapToNearestItem = () => {
+      const step = getStep();
+      const nearest = Math.round(track.scrollLeft / step) * step;
+      track.scrollTo({ left: nearest, behavior: 'smooth' });
+    };
