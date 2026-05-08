@@ -10,18 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const originalItems = Array.from(track.querySelectorAll('figure'));
 
-    if (originalItems.length > 1) {
-      const firstClone = originalItems[0].cloneNode(true);
-      const lastClone = originalItems[originalItems.length - 1].cloneNode(true);
-
-      firstClone.dataset.clone = 'true';
-      lastClone.dataset.clone = 'true';
-
-      firstClone.setAttribute('aria-hidden', 'true');
-      lastClone.setAttribute('aria-hidden', 'true');
-
-      track.insertBefore(lastClone, originalItems[0]);
-      track.appendChild(firstClone);
+    if (originalItems.length === 0) {
+      return;
     }
 
     track.querySelectorAll('img, video').forEach(media => {
@@ -29,76 +19,102 @@ document.addEventListener('DOMContentLoaded', () => {
       media.addEventListener('dragstart', event => event.preventDefault());
     });
 
-    const getStep = () => {
-      const firstItem = track.querySelector('figure');
-      if (!firstItem) {
-        return track.clientWidth;
-      }
+    if (originalItems.length === 1) {
+      prev.hidden = true;
+      next.hidden = true;
+      return;
+    }
 
-      const gap = parseFloat(getComputedStyle(track).columnGap || '0');
-      return firstItem.getBoundingClientRect().width + gap;
+    const makeClone = item => {
+      const clone = item.cloneNode(true);
+      clone.dataset.clone = 'true';
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('img, video').forEach(media => {
+        media.setAttribute('draggable', 'false');
+        media.addEventListener('dragstart', event => event.preventDefault());
+      });
+      return clone;
     };
 
-    const getRealStart = () => getStep();
-    const getRealEnd = () => getStep() * originalItems.length;
+    const beforeClones = originalItems.map(makeClone);
+    const afterClones = originalItems.map(makeClone);
 
-    const jumpTo = left => {
-      track.style.scrollBehavior = 'auto';
-      track.scrollLeft = left;
-      track.offsetHeight;
-      track.style.scrollBehavior = '';
+    beforeClones.forEach(clone => track.insertBefore(clone, originalItems[0]));
+    afterClones.forEach(clone => track.appendChild(clone));
+
+    let items = Array.from(track.querySelectorAll('figure'));
+    const realCount = originalItems.length;
+    let currentIndex = realCount;
+    let dragDelta = 0;
+    let isDragging = false;
+    let hasDragged = false;
+    let startX = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let velocity = 0;
+    let normalizeTimer = 0;
+
+    const getGap = () => parseFloat(getComputedStyle(track).gap || '0');
+
+    const getCardWidth = () => {
+      const firstItem = items[0];
+      return firstItem ? firstItem.getBoundingClientRect().width : carousel.clientWidth;
     };
 
-    const normalizeLoop = () => {
-      if (originalItems.length <= 1) {
-        return;
-      }
+    const getStep = () => getCardWidth() + getGap();
 
-      const realStart = getRealStart();
-      const realEnd = getRealEnd();
-      const tolerance = Math.max(4, getStep() * 0.18);
+    const getCenteredTranslate = (index, delta = 0) => {
+      const centerOffset = (carousel.clientWidth - getCardWidth()) / 2;
+      return centerOffset - index * getStep() + delta;
+    };
 
-      if (track.scrollLeft < realStart - tolerance) {
-        jumpTo(realEnd);
-      }
+    const setPosition = ({ animate = false, delta = 0 } = {}) => {
+      track.classList.toggle('is-animating', animate);
+      track.style.transform = `translate3d(${getCenteredTranslate(currentIndex, delta)}px, 0, 0)`;
+    };
 
-      if (track.scrollLeft > realEnd + tolerance) {
-        jumpTo(realStart);
+    const normalizeIndex = () => {
+      window.clearTimeout(normalizeTimer);
+
+      if (currentIndex < realCount) {
+        currentIndex += realCount;
+        setPosition();
+      } else if (currentIndex >= realCount * 2) {
+        currentIndex -= realCount;
+        setPosition();
       }
     };
 
-    const go = direction => {
-      track.scrollBy({ left: getStep() * direction, behavior: 'smooth' });
+    const finishAnimatedMove = () => {
+      normalizeTimer = window.setTimeout(normalizeIndex, 680);
+    };
+
+    const go = amount => {
+      currentIndex += amount;
+      dragDelta = 0;
+      setPosition({ animate: true });
+      finishAnimatedMove();
     };
 
     prev.addEventListener('click', () => go(-1));
     next.addEventListener('click', () => go(1));
 
-    let isDragging = false;
-    let startX = 0;
-    let startScrollLeft = 0;
-    let hasDragged = false;
-
-    const snapToNearestItem = () => {
-      const step = getStep();
-      const nearest = Math.round(track.scrollLeft / step) * step;
-      track.scrollTo({ left: nearest, behavior: 'smooth' });
-    };
-
-    const startOnFirstRealSlide = () => {
-      requestAnimationFrame(() => {
-        jumpTo(getRealStart());
-      });
-    };
-
-    startOnFirstRealSlide();
+    track.addEventListener('transitionend', event => {
+      if (event.propertyName === 'transform') {
+        normalizeIndex();
+      }
+    });
 
     track.addEventListener('pointerdown', event => {
       isDragging = true;
       hasDragged = false;
+      dragDelta = 0;
       startX = event.clientX;
-      startScrollLeft = track.scrollLeft;
+      lastX = event.clientX;
+      lastTime = performance.now();
+      velocity = 0;
       track.classList.add('is-dragging');
+      track.classList.remove('is-animating');
       track.setPointerCapture(event.pointerId);
     });
 
@@ -107,13 +123,18 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const distance = event.clientX - startX;
+      const now = performance.now();
+      const elapsed = Math.max(1, now - lastTime);
+      dragDelta = event.clientX - startX;
+      velocity = (event.clientX - lastX) / elapsed;
+      lastX = event.clientX;
+      lastTime = now;
 
-      if (Math.abs(distance) > 4) {
+      if (Math.abs(dragDelta) > 4) {
         hasDragged = true;
       }
 
-      track.scrollLeft = startScrollLeft - distance;
+      setPosition({ delta: dragDelta });
     });
 
     const stopDragging = event => {
@@ -128,14 +149,28 @@ document.addEventListener('DOMContentLoaded', () => {
         track.releasePointerCapture(event.pointerId);
       }
 
-      snapToNearestItem();
+      const projectedDelta = dragDelta + velocity * 260;
+      let slideChange = Math.round(-projectedDelta / getStep());
+
+      if (slideChange === 0 && Math.abs(projectedDelta) > Math.min(120, getStep() * 0.2)) {
+        slideChange = projectedDelta < 0 ? 1 : -1;
+      }
+
+      slideChange = Math.max(-2, Math.min(2, slideChange));
+
+      currentIndex += slideChange;
+      dragDelta = 0;
+      setPosition({ animate: true });
+      finishAnimatedMove();
     };
 
     track.addEventListener('pointerup', stopDragging);
     track.addEventListener('pointercancel', stopDragging);
     track.addEventListener('lostpointercapture', () => {
       isDragging = false;
+      dragDelta = 0;
       track.classList.remove('is-dragging');
+      setPosition({ animate: true });
     });
 
     track.addEventListener('click', event => {
@@ -144,11 +179,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    track.addEventListener('scroll', () => {
-      window.clearTimeout(track.loopTimer);
-      track.loopTimer = window.setTimeout(normalizeLoop, 90);
-    }, { passive: true });
+    window.addEventListener('resize', () => {
+      items = Array.from(track.querySelectorAll('figure'));
+      setPosition();
+    });
 
-    window.addEventListener('resize', startOnFirstRealSlide);
+    requestAnimationFrame(() => setPosition());
   });
 });
