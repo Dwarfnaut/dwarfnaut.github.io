@@ -940,7 +940,7 @@ h1 {
 
 /* Skill pages */
 /* Skill pages BELOW */
-/* Skill pages ----------------------------------------------------------------------------------- */
+/* Skill pages like ART, CARTOGRAPHY AND ARCHITECTURE ----------------------------------------------------------------------------------- */
 /* Skill pages BELOW */
 /* Skill pages */
 
@@ -1127,6 +1127,58 @@ h1 {
   color: var(--soft-white);
   text-decoration: none;
 }
+
+/* Lightbox for opening up images */
+
+.lightbox {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(0, 0, 0, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-image {
+  max-width: min(94vw, 1400px);
+  max-height: 90vh;
+  object-fit: contain;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(247, 247, 244, 0.4);
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.72);
+  color: var(--white);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-close:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
 
 
 
