@@ -8,6 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    track.querySelectorAll('img, video').forEach(media => {
+      media.setAttribute('draggable', 'false');
+      media.addEventListener('dragstart', event => event.preventDefault());
+    });
+
     const getStep = () => {
       const firstItem = track.querySelector('figure');
       if (!firstItem) {
