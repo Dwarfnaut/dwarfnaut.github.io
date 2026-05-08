@@ -1061,6 +1061,45 @@ h1 {
   }
 }
 
+/* Skill page nav */
+
+.skill-page .site-nav a {
+  color: var(--white);
+}
+
+.skill-page .site-nav a:hover {
+  border-bottom-color: var(--white);
+}
+
+.skill-page .home-nav-link {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  color: var(--white);
+  text-decoration: none;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.skill-page .home-nav-link:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.skill-page .itch-link {
+  border-color: var(--white);
+}
+
+/* Make image alt text less ugly if images are missing */
+.art-gallery a {
+  color: var(--soft-white);
+  text-decoration: none;
+}
+
+
 
 
 
