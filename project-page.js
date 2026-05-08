@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const applyCarouselStyles = () => {
-      carousel.style.setProperty('--carousel-card-width', 'clamp(540px, 31vw, 680px)');
+      carousel.style.setProperty('--carousel-card-width', 'clamp(560px, 33vw, 720px)');
       carousel.style.setProperty('--carousel-gap', '20px');
       carousel.style.position = 'relative';
       carousel.style.left = '50%';
