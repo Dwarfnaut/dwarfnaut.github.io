@@ -254,4 +254,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
     requestAnimationFrame(measure);
   });
+
+  const processGrid = document.querySelector('.process-grid');
+
+  if (!processGrid) {
+    return;
+  }
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'process-lightbox';
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-hidden', 'true');
+  lightbox.innerHTML = `
+    <button class="process-lightbox-close" type="button" aria-label="Close image preview">&times;</button>
+    <div class="process-lightbox-panel">
+      <div class="process-lightbox-text">
+        <h3></h3>
+        <p></p>
+      </div>
+      <img class="process-lightbox-image" src="" alt="">
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const closeButton = lightbox.querySelector('.process-lightbox-close');
+  const title = lightbox.querySelector('.process-lightbox-text h3');
+  const description = lightbox.querySelector('.process-lightbox-text p');
+  const image = lightbox.querySelector('.process-lightbox-image');
+
+  const closeLightbox = () => {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  const openLightbox = figure => {
+    const link = figure.querySelector('a');
+    const previewImage = figure.querySelector('img');
+    const caption = figure.querySelector('figcaption');
+    const captionText = caption ? caption.textContent.trim() : '';
+    const descriptionText = figure.dataset.description || captionText || previewImage.alt || '';
+
+    image.src = link ? link.href : previewImage.src;
+    image.alt = previewImage.alt || captionText;
+    title.textContent = captionText || 'Process image';
+    description.textContent = descriptionText;
+
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeButton.focus();
+  };
+
+  processGrid.querySelectorAll('figure').forEach(figure => {
+    figure.tabIndex = 0;
+    figure.setAttribute('role', 'button');
+    figure.setAttribute('aria-label', `Open ${figure.querySelector('figcaption')?.textContent.trim() || 'process image'}`);
+
+    figure.addEventListener('click', event => {
+      event.preventDefault();
+      openLightbox(figure);
+    });
+
+    figure.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openLightbox(figure);
+      }
+    });
+  });
+
+  closeButton.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', event => {
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+      closeLightbox();
+    }
+  });
 });
