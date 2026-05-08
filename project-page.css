@@ -80,7 +80,7 @@ a {
 
 .carousel {
   position: relative;
-  width: min(100% - clamp(92px, 10vw, 150px), 1900px);
+  width: min(1900px, calc(100% - clamp(36px, 6vw, 84px)));
   margin: 0 auto;
 }
 
@@ -98,3 +98,240 @@ a {
   cursor: grab;
   user-select: none;
   -webkit-user-select: none;
+}
+
+.media-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.media-strip.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+
+.carousel-button {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(247, 247, 244, 0.28);
+  border-radius: 50%;
+  background: rgba(11, 11, 11, 0.76);
+  color: var(--white);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.carousel-button:hover {
+  background: rgba(247, 247, 244, 0.94);
+  color: var(--black);
+}
+
+.carousel-button span {
+  display: block;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.carousel-button-prev {
+  left: clamp(12px, 2vw, 28px);
+}
+
+.carousel-button-next {
+  right: clamp(12px, 2vw, 28px);
+}
+
+.media-strip figure {
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.media-strip img,
+.media-strip video {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: block;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.project-cta {
+  margin-top: 34px;
+}
+
+.project-cta a {
+  min-width: 220px;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--white);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project-cta a:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.home-button {
+  position: fixed;
+  z-index: 30;
+  right: 24px;
+  bottom: 24px;
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(11, 11, 11, 0.28);
+  border-radius: 50%;
+  background: rgba(247, 247, 244, 0.92);
+  color: var(--black);
+  box-shadow: 0 12px 30px rgba(11, 11, 11, 0.16);
+}
+
+.home-button:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.home-button svg {
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.project-body {
+  width: min(1220px, calc(100% - 42px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+  gap: clamp(58px, 8vw, 120px);
+  margin: 0 auto;
+  padding: 92px 0 130px;
+}
+
+.project-copy {
+  display: grid;
+  gap: 58px;
+  align-content: start;
+}
+
+.project-copy section {
+  max-width: 720px;
+}
+
+.project-copy h2,
+.process h2 {
+  margin: 0 0 20px;
+  font-family: "Alegreya Sans SC", "Poppins", Arial, Helvetica, sans-serif;
+  font-size: clamp(1.65rem, 2vw, 2.2rem);
+  font-weight: 500;
+}
+
+.project-copy p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.process {
+  align-content: start;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.process-grid figure {
+  margin: 0;
+  padding: 10px;
+  border: 1px solid rgba(11, 11, 11, 0.1);
+  border-radius: 8px;
+  background: #fbfaf6;
+}
+
+.process-grid a {
+  display: block;
+}
+
+.process-grid img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.process-grid figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.wide-process {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 860px) {
+  .project-header {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .project-hero {
+    padding-top: 34px;
+  }
+
+  .carousel {
+    width: min(980px, calc(100% - 44px));
+  }
+
+  .media-strip {
+    grid-auto-columns: calc((100% - 18px) / 2);
+  }
+
+  .carousel-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .project-body {
+    grid-template-columns: 1fr;
+    gap: 64px;
+    padding-top: 70px;
+  }
+}
+
+@media (max-width: 560px) {
+  .carousel {
+    width: min(520px, calc(100% - 28px));
+  }
+
+  .media-strip {
+    grid-auto-columns: 100%;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-button {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+}
