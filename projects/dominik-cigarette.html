@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dominik Cigarette | Dominik Szczepaniak</title>
+  <link rel="stylesheet" href="../project-page.css">
+  <script src="../project-page.js" defer></script>
+</head>
+
+<body>
+  <header class="project-header">
+    <a href="../index.html#skills">Skills</a>
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About Me</a>
+    <a class="itch-link" href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Itch.io Profile</a>
+  </header>
+
+  <main>
+    <section class="project-hero" aria-labelledby="project-title">
+      <h1 id="project-title">Dominik Cigarette</h1>
+
+      <div class="carousel" data-carousel>
+        <button class="carousel-button carousel-button-prev" type="button" aria-label="Previous image" data-carousel-prev>
+          <span aria-hidden="true">&larr;</span>
+        </button>
+
+        <div class="media-strip" aria-label="Dominik Cigarette media carousel" data-carousel-track>
+          <figure>
+            <img src="../assets/projects/dom-cig/dom-cig-carousel-01.gif" alt="Dominik Cigarette gameplay animation">
+          </figure>
+        </div>
+
+        <button class="carousel-button carousel-button-next" type="button" aria-label="Next image" data-carousel-next>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+
+      <div class="project-cta">
+        <a href="https://dwarfnaut.itch.io/dominik-cigarette" target="_blank" rel="noreferrer">Itch Page</a>
+      </div>
+    </section>
+
+    <section class="project-body">
+      <div class="project-copy">
+        <section>
+          <h2>Overview</h2>
+          <p>
+            This is a project I made with a university classmate for the "No Art" game jam on
+            itch.io. The jam lasted for two weeks, but we worked on the game for three full days
+            only. The "no art" theme meant it was a jam perfect for programmers with no artistic
+            skills, or anyone who wanted the severe handicap of trying to make a game using only
+            primitives in-engine, shaders, and similar tools.
+          </p>
+          <p>
+            The premise of the game is an exhausted worker going back home in his crappy car with no
+            headlights. You've got to get back home safely without ditching it.
+          </p>
+          <p>
+            With that, we went for a blind drive game where the player has to listen to the sound of
+            the surface. Gravel on the sides signals being dangerously close to the ditches on the
+            side of the road. The sound was spatial, which helps determine the side of the road.
+          </p>
+        </section>
+
+        <section>
+          <h2>Role and Contributions</h2>
+          <p>
+            No-Artist, Game Designer, and Level Designer. We didn't assign any distinct roles, but
+            during development they became more apparent as I focused on building the level out in
+            Unity, while my teammate focused more on programming, UI, and sound design.
+          </p>
+          <p>
+            In the end I built out the whole track of around 3-4 minutes in length and figured out
+            the challenge of playing the spatially panned gravel sound for the left and right sides.
+            I also built the car and a house from primitives.
+          </p>
+          <p>
+            An additional mechanic that we didn't have time for was about the titular cigarette: the
+            player character would have to light it up again whenever the coughing in the background
+            became more intense.
+          </p>
+        </section>
+
+        <section>
+          <h2>Engine and Tools</h2>
+          <p>Unity, Github.</p>
+        </section>
+      </div>
+
+      <aside class="process" aria-labelledby="process-title">
+        <h2 id="process-title">Process and Sketches</h2>
+
+        <div class="process-grid">
+          <figure data-description="The main menu built using the same no-art constraint, keeping the presentation primitive and direct while still giving the project a clear identity.">
+            <a href="../assets/projects/dom-cig/dom-cig-process-main-menu.png" target="_blank">
+              <img src="../assets/projects/dom-cig/dom-cig-process-main-menu.png" alt="Dominik Cigarette main menu">
+            </a>
+            <figcaption>Main menu</figcaption>
+          </figure>
+
+          <figure class="wide-process" data-description="A Unity view of the road layout and primitive level construction, showing the long blind-driving track built around audio cues and side ditches.">
+            <a href="../assets/projects/dom-cig/dom-cig-process-track-01.png" target="_blank">
+              <img src="../assets/projects/dom-cig/dom-cig-process-track-01.png" alt="Dominik Cigarette road layout process screenshot">
+            </a>
+            <figcaption>Track layout 01</figcaption>
+          </figure>
+
+          <figure class="wide-process" data-description="Another process view of the track, focused on the road shape and how the minimal geometry supported the spatial gravel-sound mechanic.">
+            <a href="../assets/projects/dom-cig/dom-cig-process-track-02.png" target="_blank">
+              <img src="../assets/projects/dom-cig/dom-cig-process-track-02.png" alt="Dominik Cigarette track process screenshot">
+            </a>
+            <figcaption>Track layout 02</figcaption>
+          </figure>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <a class="home-button" href="../index.html" aria-label="Homepage">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 10.8 12 3l9 7.8"></path>
+      <path d="M5.5 9.5V21h13V9.5"></path>
+      <path d="M9.5 21v-6h5v6"></path>
+    </svg>
+  </a>
+</body>
+</html>
