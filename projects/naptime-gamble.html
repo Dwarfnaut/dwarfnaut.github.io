@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naptime Gamble | Dominik Szczepaniak</title>
+  <link rel="stylesheet" href="../project-page.css">
+  <script src="../project-page.js" defer></script>
+</head>
+
+<body>
+  <header class="project-header">
+    <a href="../index.html#skills">Skills</a>
+    <a href="../index.html#projects">Projects</a>
+    <a href="../index.html#about">About Me</a>
+    <a class="itch-link" href="https://dwarfnaut.itch.io/" target="_blank" rel="noreferrer">Itch.io Profile</a>
+  </header>
+
+  <main>
+    <section class="project-hero" aria-labelledby="project-title">
+      <h1 id="project-title">Naptime Gamble</h1>
+
+      <div class="carousel" data-carousel>
+        <button class="carousel-button carousel-button-prev" type="button" aria-label="Previous image" data-carousel-prev>
+          <span aria-hidden="true">&larr;</span>
+        </button>
+
+        <div class="media-strip" aria-label="Naptime Gamble media carousel" data-carousel-track>
+          <figure>
+            <img src="../assets/projects/naptime-gamble/naptime-gamble-carousel-01.png" alt="Naptime Gamble metro gameplay screenshot">
+          </figure>
+          <figure>
+            <img src="../assets/projects/naptime-gamble/naptime-gamble-carousel-02.gif" alt="Naptime Gamble gameplay animation">
+          </figure>
+          <figure>
+            <img src="../assets/projects/naptime-gamble/naptime-gamble-carousel-03.png" alt="Naptime Gamble station screenshot">
+          </figure>
+          <figure>
+            <img src="../assets/projects/naptime-gamble/naptime-gamble-carousel-04.png" alt="Naptime Gamble cover logo">
+          </figure>
+          <figure>
+            <img src="../assets/projects/naptime-gamble/naptime-gamble-carousel-05.png" alt="Naptime Gamble metro line screenshot">
+          </figure>
+        </div>
+
+        <button class="carousel-button carousel-button-next" type="button" aria-label="Next image" data-carousel-next>
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+      </div>
+
+      <div class="project-cta">
+        <a href="https://goumdree.itch.io/sleepy-metro" target="_blank" rel="noreferrer">Itch Page</a>
+      </div>
+    </section>
+
+    <section class="project-body">
+      <div class="project-copy">
+        <section>
+          <h2>Overview</h2>
+          <p>
+            This is a project made by a 7-person team at Nordic Game Jam 2025. We worked on it for
+            two full days. The themes for the jam were "sleep" or "eat", and we chose to go with
+            "sleep".
+          </p>
+          <p>
+            The game centers around the idea of a sleep-deprived 9-5 worker going back home on the
+            metro. You have to set your nap timer, switch metro lines, and be careful not to miss
+            the important stations.
+          </p>
+          <p>
+            The game was supposed to have replayability value by switching the goal station around,
+            but we only had time for one ending. We also gathered voice lines from around 20 other
+            NGJ25 participants.
+          </p>
+        </section>
+
+        <section>
+          <h2>Role and Contributions</h2>
+          <p>
+            Artist and Game Designer. My contributions for the game started with being an active
+            part of the brainstorming and conceptual phase. The game inherently revolved around a
+            metro map, so I had the main task of creating different sketches for the maze of metro
+            lines.
+          </p>
+          <p>
+            We had to simplify it a lot in the end, which can be seen in the sketches. It was also
+            due to deciding on the final mechanics quite late in the process. I also provided other
+            teammates with reference photos for asset creation. I created 3D models and some of the
+            textures for the metro stations.
+          </p>
+        </section>
+
+        <section>
+          <h2>Engine and Tools</h2>
+          <p>Unity, Github, Photoshop, Gimp, Blender, Shapelab (VR).</p>
+        </section>
+      </div>
+
+      <aside class="process" aria-labelledby="process-title">
+        <h2 id="process-title">Process and Sketches</h2>
+
+        <div class="process-grid">
+          <figure data-description="An early metro sketch exploring the maze-like structure of the line system before the mechanics and route complexity were simplified for the jam deadline.">
+            <a href="../assets/projects/naptime-gamble/naptime-gamble-process-metro-sketch.png" target="_blank">
+              <img src="../assets/projects/naptime-gamble/naptime-gamble-process-metro-sketch.png" alt="Naptime Gamble early metro sketch">
+            </a>
+            <figcaption>Metro sketch</figcaption>
+          </figure>
+
+          <figure data-description="A cleaned-up metro map pass, testing how station connections and transfers could be communicated clearly to the player.">
+            <a href="../assets/projects/naptime-gamble/naptime-gamble-process-metro-map-01.png" target="_blank">
+              <img src="../assets/projects/naptime-gamble/naptime-gamble-process-metro-map-01.png" alt="Naptime Gamble metro map pass one">
+            </a>
+            <figcaption>Metro map pass 01</figcaption>
+          </figure>
+
+          <figure data-description="Another metro map iteration, simplifying routes and checking how readable the line layout would be under time pressure.">
+            <a href="../assets/projects/naptime-gamble/naptime-gamble-process-metro-map-02.png" target="_blank">
+              <img src="../assets/projects/naptime-gamble/naptime-gamble-process-metro-map-02.png" alt="Naptime Gamble metro map pass two">
+            </a>
+            <figcaption>Metro map pass 02</figcaption>
+          </figure>
+
+          <figure data-description="The final metro map without station names, showing the simplified route structure used after narrowing the scope of the jam prototype.">
+            <a href="../assets/projects/naptime-gamble/naptime-gamble-process-final-map-no-names.png" target="_blank">
+              <img src="../assets/projects/naptime-gamble/naptime-gamble-process-final-map-no-names.png" alt="Naptime Gamble final metro map without station names">
+            </a>
+            <figcaption>Final map without names</figcaption>
+          </figure>
+
+          <figure class="wide-process" data-description="The final metro map with station names, used to support navigation, destination goals, and the sleep-timer decision loop.">
+            <a href="../assets/projects/naptime-gamble/naptime-gamble-process-final-map-names.png" target="_blank">
+              <img src="../assets/projects/naptime-gamble/naptime-gamble-process-final-map-names.png" alt="Naptime Gamble final metro map with station names">
+            </a>
+            <figcaption>Final map with names</figcaption>
+          </figure>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <a class="home-button" href="../index.html" aria-label="Homepage">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 10.8 12 3l9 7.8"></path>
+      <path d="M5.5 9.5V21h13V9.5"></path>
+      <path d="M9.5 21v-6h5v6"></path>
+    </svg>
+  </a>
+</body>
+</html>
