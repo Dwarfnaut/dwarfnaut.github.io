@@ -7,6 +7,55 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <script src="script.js" defer></script>
+  <style>
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 100%;
+    }
+
+    .project-card h3 {
+      margin-bottom: 0;
+    }
+
+    .project-summary {
+      margin: 0;
+    }
+
+    .project-details {
+      display: grid;
+      gap: 0.75rem;
+      margin-top: 0.25rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid currentColor;
+    }
+
+    .project-kind {
+      width: fit-content;
+      padding: 0.25rem 0.55rem;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .project-notes {
+      margin: 0;
+      padding-left: 1.1rem;
+      text-align: left;
+    }
+
+    .project-notes li + li {
+      margin-top: 0.25rem;
+    }
+
+    .project-card .read-more {
+      margin-top: auto;
+    }
+  </style>
 </head>
 
 <body>
@@ -70,7 +119,14 @@
             <img src="assets/projects/nosink2.gif" alt="Nosink gameplay preview" data-fallback-text="Nosink">
           </a>
           <h3>Nosink</h3>
-          <p>Fast-paced arena platformer with shooter elements. (TEAM)</p>
+          <p class="project-summary">Fast-paced arena platformer with shooter elements.</p>
+          <div class="project-details">
+            <span class="project-kind">Team</span>
+            <ul class="project-notes">
+              <li>Designed arena layouts around readable routes and combat flow.</li>
+              <li>Worked on the visual identity and playtest-driven level polish.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/nosink.html">Read More</a>
         </article>
 
@@ -79,7 +135,14 @@
             <img src="assets/projects/rattler-gamegif.gif" alt="Rattler gameplay preview" data-fallback-text="Rattler">
           </a>
           <h3>Rattler</h3>
-          <p>A sewer chaser game with multipurpose pills which both heal you and damage the ghost. (SOLO)</p>
+          <p class="project-summary">A sewer chaser game with multipurpose pills which both heal you and damage the ghost.</p>
+          <div class="project-details">
+            <span class="project-kind">Solo</span>
+            <ul class="project-notes">
+              <li>Built the full prototype from design to implementation.</li>
+              <li>Created level layout, atmosphere, mechanics, 3D assets, and sound.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/rattler.html">Read More</a>
         </article>
 
@@ -88,7 +151,14 @@
             <img src="assets/projects/teakiosks-gamegif.gif" alt="One Thousand Tea Kiosks preview" data-fallback-text="Tea Kiosks">
           </a>
           <h3>One Thousand Tea Kiosks</h3>
-          <p>A gloomy tea kiosk generator with one thousand possible combinations. (SOLO)</p>
+          <p class="project-summary">A gloomy tea kiosk generator with one thousand possible combinations.</p>
+          <div class="project-details">
+            <span class="project-kind">Solo</span>
+            <ul class="project-notes">
+              <li>Designed the procedural kiosk variation system.</li>
+              <li>Created the visual language, assets, and atmospheric presentation.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/one-thousand-tea-kiosks.html">Read More</a>
         </article>
 
@@ -97,7 +167,14 @@
             <img src="assets/projects/songofmoldandcheese-gamegif.gif" alt="A Song of Mold and Cheese gameplay preview" data-fallback-text="Mold & Cheese">
           </a>
           <h3>A Song of Mold and Cheese</h3>
-          <p>Explore the social complexity of fridge's food pyramid and face the mold threat. (TEAM)</p>
+          <p class="project-summary">Explore the social complexity of fridge's food pyramid and face the mold threat.</p>
+          <div class="project-details">
+            <span class="project-kind">Team</span>
+            <ul class="project-notes">
+              <li>Designed fridge-world level spaces and progression beats.</li>
+              <li>Helped shape the food-society concept into explorable areas.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/a-song-of-mold-and-cheese.html">Read More</a>
         </article>
 
@@ -106,7 +183,14 @@
             <img src="assets/projects/rollingmokki-gamegif.gif" alt="Rolling Through Mokki gameplay preview" data-fallback-text="Mokki">
           </a>
           <h3>Rolling Through Mökki</h3>
-          <p>Escape the cottage as a tiny creature before the smoke causes you to perish. (TEAM)</p>
+          <p class="project-summary">Escape the cottage as a tiny creature before the smoke causes you to perish.</p>
+          <div class="project-details">
+            <span class="project-kind">Team</span>
+            <ul class="project-notes">
+              <li>Designed miniature escape routes through the cottage spaces.</li>
+              <li>Built sketches and test layouts for platforming readability.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/rolling-through-mokki.html">Read More</a>
         </article>
 
@@ -115,7 +199,14 @@
             <img src="assets/projects/naptimegamble-gamegif.gif" alt="Naptime Gamble gameplay preview" data-fallback-text="Naptime">
           </a>
           <h3>Naptime Gamble</h3>
-          <p>Strategically plan your nap time while trying to reach the correct end station. (TEAM)</p>
+          <p class="project-summary">Strategically plan your nap time while trying to reach the correct end station.</p>
+          <div class="project-details">
+            <span class="project-kind">Team</span>
+            <ul class="project-notes">
+              <li>Designed metro-map logic and route-planning challenge structure.</li>
+              <li>Made process maps and helped refine the puzzle readability.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/naptime-gamble.html">Read More</a>
         </article>
 
@@ -124,7 +215,14 @@
             <img src="assets/projects/dominikcigarettegif.gif" alt="Dominik Cigarette gameplay preview" data-fallback-text="Cigarette">
           </a>
           <h3>Dominik Cigarette</h3>
-          <p>Try to drive back home with no headlights, relying on sound to avoid ditching. (DUO)</p>
+          <p class="project-summary">Try to drive back home with no headlights, relying on sound to avoid ditching.</p>
+          <div class="project-details">
+            <span class="project-kind">Duo</span>
+            <ul class="project-notes">
+              <li>Designed the audio-led driving concept and road tension.</li>
+              <li>Created track ideas, presentation, and game-feel direction.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/dominik-cigarette.html">Read More</a>
         </article>
 
@@ -133,7 +231,14 @@
             <img src="assets/projects/basementboogie-gamegif.gif" alt="Basement Boogie gameplay preview" data-fallback-text="Boogie">
           </a>
           <h3>Basement Boogie</h3>
-          <p>Survive the rat monster for as long as you can, while driving clients around in your rat taxi. (DUO)</p>
+          <p class="project-summary">Survive the rat monster for as long as you can, while driving clients around in your rat taxi.</p>
+          <div class="project-details">
+            <span class="project-kind">Duo</span>
+            <ul class="project-notes">
+              <li>Worked on the chaotic loop of taxi driving under pressure.</li>
+              <li>Helped shape the arcade pacing, mood, and play objective.</li>
+            </ul>
+          </div>
           <a class="read-more" href="https://dwarfnaut.itch.io/dominik-cigarette">Read More</a>
         </article>
 
@@ -142,7 +247,14 @@
             <img src="assets/projects/lemonorchard-gamegif.gif" alt="Lemon Orchard gameplay preview" data-fallback-text="Lemon Orchard">
           </a>
           <h3>Lemon Orchard</h3>
-          <p>Unsettling semi-PSX atmospheric short game about lemon orchards. (SOLO)</p>
+          <p class="project-summary">Unsettling semi-PSX atmospheric short game about lemon orchards.</p>
+          <div class="project-details">
+            <span class="project-kind">Solo</span>
+            <ul class="project-notes">
+              <li>Made the full short experience, from concept to final mood.</li>
+              <li>Focused on atmosphere, pacing, low-poly visuals, and interaction.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/lemon-orchard.html">Read More</a>
         </article>
 
@@ -151,7 +263,14 @@
             <img src="assets/projects/lunainsula-gamegif.gif" alt="Luna Insula gameplay preview" data-fallback-text="Luna Insula">
           </a>
           <h3>Luna Insula</h3>
-          <p>A short source-like puzzle game with dimension switching mechanic. (TEAM)</p>
+          <p class="project-summary">A short source-like puzzle game with dimension switching mechanic.</p>
+          <div class="project-details">
+            <span class="project-kind">Team</span>
+            <ul class="project-notes">
+              <li>Served as design lead and helped unify the project vision.</li>
+              <li>Created environment assets and supported level design cohesion.</li>
+            </ul>
+          </div>
           <a class="read-more" href="projects/luna-insula.html">Read More</a>
         </article>
       </div>
