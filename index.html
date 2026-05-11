@@ -14,8 +14,9 @@
       justify-content: center;
       gap: 0.45rem;
       flex-wrap: wrap;
-      margin-top: 0.9rem;
-      margin-bottom: 0;
+  
+      margin-top: 0.6rem;     /* distance from description to tags */
+      margin-bottom: 1.2rem;  /* distance from tags to Read More */
     }
   
     .project-tag {
@@ -24,21 +25,25 @@
       justify-content: center;
       min-height: 1.55rem;
       padding: 0.18rem 0.55rem;
-      border: 1px solid #9df6c3;
+      border: 1px solid currentColor;
       border-radius: 999px;
-      background: #9df6c3;
-      color: #070707;
+      background: transparent;
+      color: inherit;
       font-size: 0.7rem;
       font-weight: 700;
       line-height: 1;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease;
     }
   
     .project-tag:hover {
-      color: #ffffff;
+      background: #9df6c3;
+      border-color: #9df6c3;
+      color: #070707;
     }
   </style>
+
 
 </head>
 
